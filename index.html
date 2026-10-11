@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sano Nepal | Aito nepalilainen keittiö Sörnäisissä | Authentic Nepali Kitchen, Helsinki</title>
+<meta name="description" content="Aitoa nepalilaista ruokaa Sörnäisissä — lounasbuffet, momot, tandoor ja lämmin vieraanvaraisuus.">
+<meta name="theme-color" content="#0c0a09">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Outfit:wght@300..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#ef4444; --red-deep:#dc2626; --flame:#f97316;
+  --bg:#0c0a09; --bg2:#141210; --card:#171412; --line:rgba(255,255,255,.08);
+  --title:#ffffff; --text:rgba(255,255,255,.75); --muted:rgba(255,255,255,.5);
+  --display:"Playfair Display",serif; --sans:"Outfit",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+section{scroll-margin-top:5.2rem}
+
+/* ===== NAVBAR (come ovenhelsinki.fi) ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:200;height:4.6rem;display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1.2rem,3.5vw,3rem);background:rgba(12,10,9,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(249,115,22,.18);transition:background .4s,box-shadow .4s}
+header.scrolled{background:rgba(12,10,9,.96);box-shadow:0 10px 34px rgba(0,0,0,.55)}
+header .brand{display:flex;align-items:center;gap:.7rem}
+header .brand .mark{width:40px;height:40px;flex:none}
+header .brand .name{font-family:var(--display);font-weight:700;font-size:1.02rem;line-height:1.05;color:#fff;letter-spacing:.04em}
+header .brand .name small{display:block;font-family:var(--sans);font-weight:600;font-size:.52rem;letter-spacing:.42em;color:var(--flame);text-transform:uppercase}
+header nav{display:flex;gap:1.7rem;align-items:center}
+header nav a.nl{position:relative;font-size:.86rem;font-weight:600;color:rgba(255,255,255,.88);padding:.4rem 0;transition:color .3s}
+header nav a.nl::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:100%;background:var(--red);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+header nav a.nl:hover{color:#fff}
+header nav a.nl:hover::after,header nav a.nl.active::after{transform:scaleX(1)}
+header nav a.nl.active{color:var(--red)}
+header .actions{display:flex;align-items:center;gap:.7rem}
+.pill-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.15rem;border-radius:999px;
+  background:linear-gradient(135deg,var(--red) 0%,var(--flame) 130%);color:#fff;font-size:.8rem;font-weight:700;
+  letter-spacing:.04em;border:1px solid rgba(255,255,255,.14);transition:.3s;box-shadow:0 6px 20px rgba(239,68,68,.28)}
+.pill-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(239,68,68,.45)}
+.pill-btn svg{width:15px;height:15px;flex:none}
+.lang{display:flex;align-items:center;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:.32rem .55rem;gap:.45rem;background:rgba(255,255,255,.04)}
+.lang button{background:none;border:none;cursor:pointer;font-family:var(--sans);font-weight:700;font-size:.74rem;color:var(--muted);
+  display:flex;align-items:center;gap:.32rem;transition:.25s;letter-spacing:.04em}
+.lang button.on{color:#fff}
+.lang button:hover{color:#fff}
+.sun{background:none;border:none;cursor:pointer;color:var(--flame);display:flex;padding:.3rem}
+@media(max-width:1020px){header nav{display:none}}
+@media(max-width:640px){header .actions .pill-btn span{display:none}header .actions .pill-btn{padding:.6rem .7rem}}
+
+/* ===== HERO (zoom + sovraimpressione) ===== */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;background:var(--bg)}
+.hero .bg{position:absolute;inset:0;background:url("assets2/foto1.jpg") center/cover no-repeat;z-index:0;
+  transform:scale(1.32);animation:heroZoom 3.2s cubic-bezier(.22,.61,.36,1) forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,10,9,.62) 0%,rgba(12,10,9,.32) 45%,rgba(12,10,9,.9) 100%);z-index:1}
+.hero .inner{position:relative;z-index:2;padding:6rem 1.4rem 4rem;max-width:960px}
+.hero .welcome{font-size:.85rem;letter-spacing:.5em;text-transform:uppercase;font-weight:600;color:#fff;margin-bottom:1rem;
+  opacity:0;animation:heroText .9s ease .95s forwards;text-shadow:0 2px 20px rgba(0,0,0,.8)}
+.hero h1{font-family:var(--display);font-style:italic;font-weight:600;font-size:clamp(3rem,9vw,6.4rem);line-height:1.02;letter-spacing:-.01em;
+  color:var(--red);text-shadow:0 6px 44px rgba(0,0,0,.65);
+  opacity:0;animation:heroText 1.2s ease 1.1s forwards}
+@keyframes heroText{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero .sub{margin:1.4rem auto 0;max-width:62ch;font-size:clamp(.95rem,1.4vw,1.1rem);color:rgba(255,255,255,.9);
+  text-shadow:0 2px 18px rgba(0,0,0,.75);opacity:0;animation:heroText 1.1s ease 1.5s forwards}
+.hero .row{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;margin-top:2.4rem;opacity:0;animation:heroText 1.1s ease 1.8s forwards}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.9rem;border-radius:.55rem;font-weight:700;font-size:.88rem;
+  letter-spacing:.1em;text-transform:uppercase;transition:.3s}
+.btn-outline{background:rgba(12,10,9,.4);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.btn-outline:hover{background:var(--red);border-color:var(--red);color:#fff}
+.btn-fire{background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;border:1px solid transparent}
+.btn-fire:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(239,68,68,.5)}
+.hero .scroll-hint{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:2;color:var(--muted);
+  font-size:.66rem;letter-spacing:.36em;text-transform:uppercase;animation:hintBob 2.2s ease-in-out infinite}
+@keyframes hintBob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ===== ABOUT (Himalajan tyyli) ===== */
+.about{background:var(--bg);padding:6.5rem 1.4rem}
+.about .wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.about figure{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.about figure img{width:100%;height:100%;min-height:380px;object-fit:cover}
+.about .tagbox{position:absolute;left:1.2rem;bottom:1.2rem;background:linear-gradient(135deg,var(--flame),var(--red));
+  color:#fff;padding:.9rem 1.2rem;border-radius:10px;text-align:center;line-height:1.15;box-shadow:0 14px 30px rgba(0,0,0,.45)}
+.about .tagbox b{display:block;font-family:var(--display);font-size:1.5rem;font-weight:800}
+.about .tagbox small{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.about .txt .eyebrow{display:flex;align-items:center;gap:.9rem;color:var(--red);font-size:.72rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;margin-bottom:1.1rem}
+.about .txt .eyebrow::before{content:"";width:44px;height:2px;background:linear-gradient(90deg,var(--flame),var(--red))}
+.about h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.2vw,3.1rem);color:var(--title);line-height:1.12}
+.about h2 em{font-style:italic;color:var(--red)}
+.about p{margin-top:1.1rem;font-size:.97rem}
+.about .more{display:inline-flex;align-items:center;gap:.45rem;margin-top:1.5rem;color:var(--red);font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;transition:.3s}
+.about .more:hover{gap:.8rem;color:var(--flame)}
+@media(max-width:900px){.about .wrap{grid-template-columns:1fr}}
+
+/* ===== PARHAAT (3 card come oven) ===== */
+.best{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:5.5rem 1.4rem}
+.best .head{text-align:center;max-width:760px;margin:0 auto 3rem}
+.best h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,3.2rem);color:var(--title)}
+.best h2 em{font-style:italic;color:var(--red)}
+.best .head p{margin-top:.7rem;color:var(--muted)}
+.best .rule{width:64px;height:3px;margin:1.2rem auto 0;background:linear-gradient(90deg,var(--flame),var(--red));border-radius:2px}
+.best .grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem}
+.best .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.35s}
+.best .card:hover{transform:translateY(-6px);border-color:rgba(239,68,68,.45);box-shadow:0 20px 44px rgba(0,0,0,.45)}
+.best .card figure{height:210px;overflow:hidden}
+.best .card img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.best .card:hover img{transform:scale(1.06)}
+.best .card .txt{padding:1.4rem 1.5rem 1.6rem}
+.best .card h3{font-family:var(--display);font-weight:600;font-size:1.35rem;color:var(--title)}
+.best .card p{font-size:.9rem;margin-top:.45rem;color:var(--text)}
+.best .center{text-align:center;margin-top:2.8rem}
+
+/* ===== LOUNAS ===== */
+.lunch{background:var(--bg);padding:5.5rem 1.4rem 0;text-align:center}
+.lunch h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,3.2rem);color:var(--title)}
+.lunch h2 em{font-style:italic;color:var(--red)}
+.lunch p{margin:.8rem auto 0;max-width:60ch}
+.lunch .rule{width:64px;height:3px;margin:1.2rem auto 0;background:linear-gradient(90deg,var(--flame),var(--red));border-radius:2px}
+.lunch .days{margin-top:1.1rem;font-weight:700;color:var(--title)}
+.lunch .days span{color:var(--red)}
+.buffet-wrap{max-width:1000px;margin:0 auto;padding:2.6rem 0 5.5rem}
+.buffet-card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  display:grid;grid-template-columns:1.1fr .9fr;box-shadow:0 24px 60px rgba(0,0,0,.5);text-align:left}
+.buffet-card .txt{padding:clamp(1.8rem,4vw,3rem)}
+.buffet-card .txt h3{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3vw,2.2rem);color:var(--title)}
+.buffet-card .txt h3 em{font-style:italic;color:var(--red)}
+.buffet-card .txt p{margin-top:.8rem}
+.buffet-card .txt ul{margin:1.3rem 0 0;list-style:none;display:grid;gap:.55rem}
+.buffet-card .txt li{display:flex;gap:.7rem;align-items:center;font-weight:500;font-size:.94rem}
+.buffet-card .txt li::before{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--flame));flex:none}
+.buffet-card figure{min-height:280px}
+.buffet-card img{width:100%;height:100%;object-fit:cover}
+@media(max-width:820px){.buffet-card{grid-template-columns:1fr}}
+
+/* ===== MENU (tab spalmate in alto) ===== */
+.menu-hero{text-align:center;padding:5rem 1.4rem 0}
+.menu-hero h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,3.2rem);color:var(--title)}
+.menu-hero h2 em{font-style:italic;color:var(--red)}
+.menu-hero p{margin:.8rem auto 0;max-width:58ch}
+.menu-tabs{position:sticky;top:4.6rem;z-index:150;background:rgba(12,10,9,.96);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:2.4rem}
+.menu-tabs .row{max-width:1000px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+.menu-tabs .row::-webkit-scrollbar{display:none}
+.menu-tabs button{flex:1 0 auto;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);
+  font-family:var(--sans);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.95rem 1.2rem;cursor:pointer;transition:.25s;white-space:nowrap}
+.menu-tabs button.active{color:var(--red);border-bottom-color:var(--red)}
+.menu-tabs button:hover{color:#fff}
+.menu-wrap{max-width:1000px;margin:0 auto;padding:1.6rem 1.4rem 5rem}
+.menu-list{background:var(--bg2);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.dish{display:flex;justify-content:space-between;gap:1.2rem;padding:1.05rem 1.5rem;border-bottom:1px solid var(--line);align-items:baseline}
+.dish:last-child{border-bottom:none}
+.dish b{font-weight:600;font-size:.98rem;color:var(--title)}
+.dish small{display:block;color:var(--muted);font-size:.84rem;margin-top:.1rem}
+.dish .p{font-family:var(--display);font-size:1.1rem;color:var(--red);white-space:nowrap}
+
+/* ===== ETSI MEIDÄT (mappa + orari) ===== */
+.find{background:var(--bg2);border-top:1px solid var(--line);padding:5.5rem 1.4rem}
+.find h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,3.2rem);color:var(--title);text-align:center}
+.find h2 em{font-style:italic;color:var(--red)}
+.find .rule{width:64px;height:3px;margin:1.2rem auto 2.8rem;background:linear-gradient(90deg,var(--flame),var(--red));border-radius:2px}
+.find .wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:1.4rem}
+.find .map{border:1px solid rgba(249,115,22,.35);border-radius:14px;overflow:hidden;min-height:340px}
+.find .map iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.25) contrast(1.05)}
+.hours{background:rgba(255,255,255,.02);border:1px solid rgba(249,115,22,.35);border-radius:14px;padding:1.6rem 1.8rem}
+.hours .hrow{display:flex;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid var(--line);font-weight:600;font-size:.95rem}
+.hours .hrow:last-child{border-bottom:none}
+.hours .hrow span{color:var(--flame);font-weight:700}
+.hours .hrow.label{border-bottom:none;padding-bottom:.15rem}
+.hours .hrow.label span{color:var(--flame);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase}
+.find .addr{text-align:center;margin-top:1.8rem;font-size:.95rem;color:var(--text)}
+.find .addr b{color:var(--title)}
+@media(max-width:900px){.find .wrap{grid-template-columns:1fr}}
+
+/* ===== CTA ===== */
+.cta-final{position:relative;color:#fff;text-align:center;padding:7rem 1.4rem;overflow:hidden;background:var(--bg)}
+.cta-final .bg{position:absolute;inset:0;background:url("assets2/foto5.jpg") center/cover no-repeat;z-index:0;
+  transform:scale(1.15);animation:heroZoom 2.6s ease-out forwards}
+.cta-final::after{content:"";position:absolute;inset:0;background:rgba(12,10,9,.82);z-index:1}
+.cta-final h2{position:relative;z-index:2;font-family:var(--display);font-weight:600;font-size:clamp(2rem,5vw,3.6rem);line-height:1.15;max-width:22ch;margin:0 auto}
+.cta-final p{position:relative;z-index:2;margin:1.3rem auto 0;max-width:60ch;color:rgba(255,255,255,.85)}
+.cta-final .btn{position:relative;z-index:2;margin-top:2.2rem}
+
+/* ===== RESERVATION (stessa piattaforma di sherpafood.fi/#reservation) ===== */
+.reservation{position:relative;color:#fff;text-align:center;padding:6rem 1.4rem;overflow:hidden;
+  background:url("assets2/foto2.jpg") center/cover no-repeat}
+.reservation::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55);z-index:1}
+.reservation .rel{position:relative;z-index:2;max-width:640px;margin:0 auto}
+.reservation h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3rem);color:#fff;margin-bottom:.6rem}
+.reservation .lead{font-size:1.05rem;color:rgba(255,255,255,.9);margin-bottom:2rem}
+.res-form{background:rgba(255,255,255,.95);border-radius:14px;padding:clamp(1.4rem,3.5vw,2.2rem);text-align:left;
+  box-shadow:0 26px 70px rgba(0,0,0,.55)}
+.res-form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem}
+.res-form input,.res-form select{width:100%;padding:.85rem 1rem;border:1px solid #d1d5db;border-radius:.5rem;
+  font-family:var(--sans);font-size:.95rem;color:#1f2937;background:#fff;outline:none;transition:.25s}
+.res-form input:focus,.res-form select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(239,68,68,.15)}
+.res-form select:invalid{color:#6b7280}
+.res-form button{width:100%;padding:1rem;border:none;border-radius:.55rem;cursor:pointer;
+  background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;font-family:var(--sans);font-weight:700;
+  font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;transition:.3s}
+.res-form button:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(239,68,68,.45)}
+.res-form .note{margin-top:.9rem;text-align:center;font-size:.8rem;color:#6b7280}
+.res-ok{display:none;background:rgba(255,255,255,.95);border-radius:14px;padding:2.2rem;text-align:center;color:#1f2937}
+.res-ok.show{display:block}
+.res-ok h3{font-family:var(--display);color:var(--red);font-size:1.5rem;margin-bottom:.5rem}
+@media(max-width:640px){.res-form .grid2{grid-template-columns:1fr}}
+
+/* ===== FOOTER (come oven) ===== */
+footer{background:#0a0807;border-top:1px solid var(--line);color:var(--muted);padding:4.5rem 1.4rem 2rem}
+.foot-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem}
+.foot-grid .fbrand .fname{font-family:var(--display);font-weight:700;font-size:1.6rem;color:#fff;line-height:1.1}
+.foot-grid .fbrand .fname em{font-style:italic;color:var(--flame)}
+.foot-grid .fbrand p{margin-top:.7rem;font-size:.9rem;max-width:34ch}
+.foot-social{display:flex;gap:.7rem;margin-top:1.4rem}
+.foot-social a{width:42px;height:42px;border:1px solid rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.3s}
+.foot-social a:hover{background:var(--red);border-color:var(--red);transform:translateY(-3px)}
+.foot-social svg{width:16px;height:16px;fill:#fff}
+.foot-grid h5{color:var(--red);font-size:.8rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;margin-bottom:1.1rem}
+.foot-grid ul{list-style:none;display:grid;gap:.55rem}
+.foot-grid ul a{font-size:.93rem;transition:.25s}
+.foot-grid ul a:hover{color:var(--flame)}
+.foot-bottom{max-width:1180px;margin:3rem auto 0;padding-top:1.4rem;border-top:1px solid var(--line);text-align:center;font-size:.8rem}
+@media(max-width:820px){.foot-grid{grid-template-columns:1fr;gap:2.2rem}}
+
+#toTop{position:fixed;right:1.3rem;bottom:1.3rem;z-index:180;width:44px;height:44px;border-radius:10px;
+  background:linear-gradient(135deg,var(--flame),var(--red));color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 26px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.35s}
+#toTop.show{opacity:1;pointer-events:auto}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header id="hdr">
+  <a class="brand" href="#alku">
+    <svg class="mark" viewBox="0 0 48 48" fill="none">
+      <circle cx="24" cy="24" r="22" stroke="#f97316" stroke-width="2.4"/>
+      <path d="M24 8c4 6 9 8.5 9 15a9 9 0 1 1-18 0c0-6.5 5-9 9-15z" fill="#ef4444"/>
+      <path d="M24 20c1.8 2.6 4 3.8 4 7a4 4 0 1 1-8 0c0-3.2 2.2-4.4 4-7z" fill="#0c0a09"/>
+    </svg>
+    <span class="name">SANO NEPAL<small>Helsinki · Sörnäinen</small></span>
+  </a>
+  <nav>
+    <a class="nl active" href="#alku" data-fi="Etusivu" data-en="Home">Etusivu</a>
+    <a class="nl" href="#lounas" data-fi="Lounas" data-en="Lunch">Lounas</a>
+    <a class="nl" href="#menu" data-fi="Valikko" data-en="Menu">Valikko</a>
+    <a class="nl" href="#loyda" data-fi="Ota yhteyttä" data-en="Contact">Ota yhteyttä</a>
+    <a class="nl" href="#galleria" data-fi="Kuvagalleria" data-en="Gallery">Kuvagalleria</a>
+  </nav>
+  <div class="actions">
+    <a class="pill-btn" href="#reservation" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+      <span data-fi="Varaa pöytä" data-en="Book a table">Varaa pöytä</span></a>
+    <a class="pill-btn" href="https://wolt.com/fi/fin/helsinki/restaurant/sano-nepal" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l1.5 12.5a1 1 0 0 1-1 1.1H5.5a1 1 0 0 1-1-1.1L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+      <span data-fi="Verkkotilaus" data-en="Order online">Verkkotilaus</span></a>
+    <div class="lang">
+      <button id="btnFI" class="on">🇫🇮 FI</button>
+      <button id="btnEN">🇬🇧 EN</button>
+    </div>
+    <button class="sun" title="Tema" aria-label="Tema">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="alku">
+  <div class="bg"></div>
+  <div class="inner">
+    <div class="welcome" data-fi="Tervetuloa" data-en="Welcome">Tervetuloa</div>
+    <h1>Sano Nepal</h1>
+    <p class="sub" data-fi="Aito nepalilainen keittiö Sörnäisissä — tandoorin lämpö, käsintehdyt momot ja lämmin vieraanvaraisuus joka päivä."
+       data-en="Authentic Nepali kitchen in Sörnäinen — tandoor heat, hand-made momos and warm hospitality every day.">Aito nepalilainen keittiö Sörnäisissä — tandoorin lämpö, käsintehdyt momot ja lämmin vieraanvaraisuus joka päivä.</p>
+    <div class="row">
+      <a class="btn btn-outline" href="#menu" data-fi="Katso Valikko" data-en="View Menu">Katso Valikko</a>
+      <a class="btn btn-outline" href="#reservation" target="_blank" rel="noopener" data-fi="Varaa pöytä" data-en="Book a table">Varaa pöytä</a>
+      <a class="btn btn-outline" href="https://wolt.com/fi/fin/helsinki/restaurant/sano-nepal" target="_blank" rel="noopener" data-fi="Verkkotilaus" data-en="Order online">Verkkotilaus</a>
+    </div>
+  </div>
+  <div class="scroll-hint" data-fi="Scrollaa" data-en="Scroll">Scrollaa</div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about reveal">
+  <div class="wrap">
+    <figure>
+      <img src="assets2/foto3.jpg" alt="Sano Nepal — ravintolasali">
+      <div class="tagbox"><b>100%</b><small data-fi="Aitoa &amp; käsintehtyä" data-en="Authentic &amp; hand-made">Aitoa &amp; käsintehtyä</small></div>
+    </figure>
+    <div class="txt">
+      <div class="eyebrow">Namaste and welcome</div>
+      <h2 data-fih="Sano Nepalin <em>Alkuperäinen</em> Maku." data-enh="The <em>Original</em> Taste of Sano Nepal.">Sano Nepalin <em>Alkuperäinen</em> Maku.</h2>
+      <p data-fi="Sano Nepal, joka sijaitsee Sörnäisissä Helsingin sydämessä, tuo aidon nepalilaisen keittiön suomalaisten ulottuville. Kokemuksemme keittiössä ja vieraanvaraisuudessa näkyy jokaisessa annoksessa — perinteiset nepalilaiset reseptit, tuoreet raaka-aineet ja tandoorin savuisa lämpö."
+         data-en="Sano Nepal, located in Sörnäinen in the heart of Helsinki, brings authentic Nepali cuisine within everyone's reach. Our experience in the kitchen and in hospitality shows in every dish — traditional Nepali recipes, fresh ingredients and the smoky heat of the tandoor.">Sano Nepal, joka sijaitsee Sörnäisissä Helsingin sydämessä, tuo aidon nepalilaisen keittiön suomalaisten ulottuville. Kokemuksemme keittiössä ja vieraanvaraisuudessa näkyy jokaisessa annoksessa — perinteiset nepalilaiset reseptit, tuoreet raaka-aineet ja tandoorin savuisa lämpö.</p>
+      <p data-fi="Laajasta valikostamme löytyy jotain kaikille: kanaa, lammasta, kasvisruokia ja vegaanisia vaihtoehtoja. Lounaalla tarjoilemme runsaan nepalilaisen buffetin, ja illalla pöydät täyttyvät tulisista curryista ja mehevistä momeista."
+         data-en="Our wide menu has something for everyone: chicken, lamb, vegetarian and vegan options. At lunch we serve a generous Nepali buffet, and in the evening the tables fill with fiery curries and juicy momos.">Laajasta valikostamme löytyy jotain kaikille: kanaa, lammasta, kasvisruokia ja vegaanisia vaihtoehtoja. Lounaalla tarjoilemme runsaan nepalilaisen buffetin, ja illalla pöydät täyttyvät tulisista curryista ja mehevistä momeista.</p>
+      <a class="more" href="#menu"><span data-fi="Lue lisää" data-en="Read more">Lue lisää</span> <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARHAAT ===== -->
+<section class="best reveal" id="parhaat">
+  <div class="head">
+    <h2 data-fih="Meidän <em>Parhaat</em> Ruokamme" data-enh="Our <em>Best</em> Dishes">Meidän <em>Parhaat</em> Ruokamme</h2>
+    <div class="rule"></div>
+    <p data-fi="Löydä maut, jotka tekevät Sano Nepalista erityisen." data-en="Discover the flavours that make Sano Nepal special.">Löydä maut, jotka tekevät Sano Nepalista erityisen.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <figure><img src="assets2/card-momo.jpg" alt="Mo:Mo — höyrytetyt momot tomaattichutneyn kanssa"></figure>
+      <div class="txt"><h3>Mo:Mo</h3><p data-fi="Käsintehdyt höyrytetyt momot — butter chicken - tai tikka-kastikkeessa. Nepalin kansallisruoka."
+        data-en="Hand-steamed momos in butter chicken or tikka sauce. Nepal's national dish.">Käsintehdyt höyrytetyt momot — butter chicken - tai tikka-kastikkeessa. Nepalin kansallisruoka.</p></div>
+    </div>
+    <div class="card">
+      <figure><img src="assets2/card-naan.jpg" alt="Naan &amp; Tandoor — valkosipulinaan tandooriuunissa"></figure>
+      <div class="txt"><h3>Naan &amp; Tandoor</h3><p data-fi="Perinteinen leipä, paistettu savuisen tandooriuunin liekeissä — pehmeä ja ihana."
+        data-en="Traditional bread baked in the smoky flames of the tandoor oven — soft and wonderful.">Perinteinen leipä, paistettu savuisen tandooriuunin liekeissä — pehmeä ja ihana.</p></div>
+    </div>
+    <div class="card">
+      <figure><img src="assets2/card-biryani.jpg" alt="Curry &amp; Biryani — butter chicken ja kana-biryani"></figure>
+      <div class="txt"><h3>Curry &amp; Biryani</h3><p data-fi="Kermainen butter chicken ja tuoksuva kana-biryani — aitoja Himalajan makuja joka päivä."
+        data-en="Creamy butter chicken and fragrant chicken biryani — authentic Himalayan flavours every day.">Kermainen butter chicken ja tuoksuva kana-biryani — aitoja Himalajan makuja joka päivä.</p></div>
+    </div>
+  </div>
+  <div class="center"><a class="pill-btn" style="padding:.85rem 2rem" href="#menu"><span data-fi="Tutustu Valikkoon" data-en="Explore the Menu">Tutustu Valikkoon</span> <span>→</span></a></div>
+</section>
+
+<!-- ===== LOUNAS ===== -->
+<section class="lunch reveal" id="lounas">
+  <h2 data-fih="Päivittäinen <em>Lounas</em>" data-enh="Daily <em>Lunch</em>">Päivittäinen <em>Lounas</em></h2>
+  <div class="rule"></div>
+  <p data-fi="Koe nepalilainen maku arkisin — päivittäin vaihtuva lounas valmistetaan perinteisillä mausteilla ja tuoreilla raaka-aineilla. Salaattibaari, tuore naan, keitto ja kahvi tai tee sisältyvät."
+     data-en="Experience Nepali flavours on weekdays — a rotating lunch made with traditional spices and fresh ingredients. Salad bar, fresh naan, soup and coffee or tea included.">Koe nepalilainen maku arkisin — päivittäin vaihtuva lounas valmistetaan perinteisillä mausteilla ja tuoreilla raaka-aineilla. Salaattibaari, tuore naan, keitto ja kahvi tai tee sisältyvät.</p>
+  <div class="days"><span data-fi="Maanantai – Perjantai:" data-en="Monday – Friday:">Maanantai – Perjantai:</span> <span>10:30 – 14:30</span></div>
+  <div class="buffet-wrap">
+    <div class="buffet-card">
+      <div class="txt">
+        <h3 data-fih="Lounas<em>buffet.</em>" data-enh="Lunch <em>buffet.</em>">Lounas<em>buffet.</em></h3>
+        <p data-fi="Päivittäin vaihtuva nepalilainen buffet — et koskaan syö samaa lounasta kahdesti."
+           data-en="A rotating Nepali buffet — you will never eat the same lunch twice.">Päivittäin vaihtuva nepalilainen buffet — et koskaan syö samaa lounasta kahdesti.</p>
+        <ul>
+          <li data-fi="Salaattibaari" data-en="Salad bar">Salaattibaari</li>
+          <li data-fi="Basmatiriisi" data-en="Basmati rice">Basmatiriisi</li>
+          <li data-fi="Tuore naan-leipä" data-en="Fresh naan bread">Tuore naan-leipä</li>
+          <li data-fi="Lämmin keitto" data-en="Warm soup">Lämmin keitto</li>
+          <li data-fi="Kahvi / tee" data-en="Coffee / tea">Kahvi / tee</li>
+        </ul>
+        <p style="margin-top:1.3rem"><a class="btn btn-fire" style="font-size:.8rem" href="#reservation" target="_blank" rel="noopener" data-fi="Varaa lounaspöytä" data-en="Book a lunch table">Varaa lounaspöytä</a></p>
+      </div>
+      <figure><img src="assets2/foto5.jpg" alt="Lounasbuffet"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MENU ===== -->
+<section class="menu-hero reveal" id="menu">
+  <h2 data-fih="Tutustu <em>Valikkoomme</em>" data-enh="Explore <em>Our Menu</em>">Tutustu <em>Valikkoomme</em></h2>
+  <p data-fi="Aitoja nepalilaisia makuja intohimolla ja perinteellä. Tandoorista pöytään — jokainen annos valmistetaan tilauksesta."
+     data-en="Authentic Nepali flavours crafted with passion and tradition. From our tandoor to your table, every dish is made to order.">Aitoja nepalilaisia makuja intohimolla ja perinteellä. Tandoorista pöytään — jokainen annos valmistetaan tilauksesta.</p>
+</section>
+<div class="menu-tabs">
+  <div class="row" id="tabs"></div>
+</div>
+<div class="menu-wrap" id="galleria">
+  <div class="menu-list" id="list"></div>
+  <p style="margin-top:1.2rem;font-size:.88rem;color:var(--muted)" data-fi="Täydellinen menu ravintolassa ja Woltissa."
+     data-en="Full menu in the restaurant and on Wolt.">Täydellinen menu ravintolassa ja Woltissa.</p>
+</div>
+
+<!-- ===== ETSI MEIDÄT ===== -->
+<section class="find reveal" id="loyda">
+  <h2 data-fih="Etsi <em>Meidät</em>" data-enh="Find <em>Us</em>">Etsi <em>Meidät</em></h2>
+  <div class="rule"></div>
+  <div class="wrap">
+    <div class="map">
+      <iframe title="Kartta — Sano Nepal" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Kulmavuorenkatu+4,+00500+Helsinki&output=embed"></iframe>
+    </div>
+    <div class="hours">
+      <div class="hrow label"><span data-fi="Aukioloajat" data-en="Opening hours">Aukioloajat</span></div>
+      <div class="hrow"><span data-fi="MA – SU" data-en="MON – SUN" style="color:inherit;font-weight:600">MA – SU</span> <span>10:00 – 22:00</span></div>
+      <div class="hrow label" style="padding-top:.8rem"><span data-fi="Lounas" data-en="Lunch">Lounas</span></div>
+      <div class="hrow"><span data-fi="MA – PE" data-en="MON – FRI" style="color:inherit;font-weight:600">MA – PE</span> <span>10:30 – 14:30</span></div>
+    </div>
+  </div>
+  <p class="addr"><b>Kulmavuorenkatu 4, 00500 Helsinki</b> · Sörnäinen · <a href="tel:+358449184077" style="color:var(--flame)">+358 44 9184077</a></p>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-final reveal">
+  <div class="bg"></div>
+  <h2 data-fi="Valmis unohtumattomalle ruokailukokemukselle?" data-en="Ready for an unforgettable dining experience?">Valmis unohtumattomalle ruokailukokemukselle?</h2>
+  <p data-fi="Liity meihin lounaalla tai päivällisellä. Suosittelemme varaamaan etukäteen varataksesi paikkasi."
+     data-en="Join us for lunch or dinner. We recommend booking in advance to secure your table.">Liity meihin lounaalla tai päivällisellä. Suosittelemme varaamaan etukäteen varataksesi paikkasi.</p>
+  <a class="btn btn-fire" style="padding:1rem 2.6rem" href="#reservation" target="_blank" rel="noopener"><span data-fi="Varaa pöytä" data-en="Book a table">Varaa pöytä</span> <span>→</span></a>
+</section>
+
+<!-- ===== RESERVATION (servizio dedicato Sano Nepal, stessa piattaforma di Sherpa) ===== -->
+<section class="reservation reveal" id="reservation">
+  <div class="rel">
+    <h2 data-fi="Varaa pöytä" data-en="Reserve a Table">Varaa pöytä</h2>
+    <p class="lead" data-fi="Varaa pöytä nyt ja nauti unohtumattomasta ruokailukokemuksesta."
+       data-en="Book a table now and enjoy a fantastic dining experience.">Varaa pöytä nyt ja nauti unohtumattomasta ruokailukokemuksesta.</p>
+    <form class="res-form" id="resForm" novalidate>
+      <div class="grid2">
+        <input type="text" name="name" required data-fi-ph="Koko nimi" data-en-ph="Full Name" placeholder="Koko nimi">
+        <input type="email" name="email" required data-fi-ph="Sähköpostiosoite" data-en-ph="Email Address" placeholder="Sähköpostiosoite">
+      </div>
+      <div class="grid2">
+        <input type="tel" name="phone" data-fi-ph="Puhelinnumero (valinnainen)" data-en-ph="Phone Number (optional)" placeholder="Puhelinnumero (valinnainen)">
+        <select name="guests" required>
+          <option value="" disabled selected data-fi="Valitse vieraiden määrä" data-en="Select number of guests">Valitse vieraiden määrä</option>
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+          <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+          <option value="13">13</option><option value="14">14</option><option value="15">15</option>
+        </select>
+      </div>
+      <div class="grid2">
+        <input type="date" name="bdate" required>
+        <input type="time" name="btime" required>
+      </div>
+      <button type="submit" data-fi="Varaa pöytä" data-en="Reserve a Table">Varaa pöytä</button>
+      <p class="note" data-fi="Pyyhkäise lähettääksesi varauksen suoraan ravintolan WhatsAppiin."
+         data-en="Swipe to send your booking straight to the restaurant's WhatsApp.">Pyyhkäise lähettääksesi varauksen suoraan ravintolan WhatsAppiin.</p>
+    </form>
+    <div class="res-ok" id="resOk">
+      <h3 data-fi="Kiitos varauksesta!" data-en="Thank you for your booking!">Kiitos varauksesta!</h3>
+      <p data-fi="Varauksesi on valmis lähetettäväksi. Vahvistus tulee WhatsAppissa."
+         data-en="Your booking is ready to send. Confirmation will arrive via WhatsApp.">Varauksesi on valmis lähetettäväksi. Vahvistus tulee WhatsAppissa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot-grid">
+    <div class="fbrand">
+      <div class="fname" data-fih="Tervetuloa<br><em>Sano Nepal</em>" data-enh="Welcome to<br><em>Sano Nepal</em>">Tervetuloa<br><em>Sano Nepal</em></div>
+      <p data-fi="Aito nepalilainen Himalajan keittiö ja lämmin olemus."
+         data-en="Authentic Himalayan Nepali kitchen and a warm soul.">Aito nepalilainen Himalajan keittiö ja lämmin olemus.</p>
+      <div class="foot-social">
+        <a href="https://instagram.com/sanonepal" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.25.15 4.77 1.7 4.92 4.92.06 1.27.07 1.65.07 4.86s-.01 3.6-.07 4.86c-.15 3.23-1.66 4.77-4.92 4.92-1.3.06-1.65.07-4.9.07s-3.6-.01-4.86-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.2 15.6 2.2 15.24 2.2 12s0-3.6.07-4.86C2.42 3.9 3.94 2.36 7.19 2.21 8.45 2.2 8.8 2.2 12 2.2zm0 3.1a6.7 6.7 0 1 0 0 13.4 6.7 6.7 0 0 0 0-13.4zm0 11a4.35 4.35 0 1 1 0-8.7 4.35 4.35 0 0 1 0 8.7zm6.96-11.25a1.56 1.56 0 1 0 0 3.13 1.56 1.56 0 0 0 0-3.13z"/></svg></a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.4 21v-8.2h2.76l.41-3.2H13.4V7.55c0-.93.26-1.56 1.6-1.56h1.7V3.02c-.3-.04-1.3-.13-2.48-.13-2.45 0-4.13 1.5-4.13 4.24v2.47H7.3v3.2h2.79V21h3.31z"/></svg></a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 3c.4 2.1 1.8 3.6 3.9 3.8v3c-1.5 0-2.8-.44-3.9-1.2v6.3a5.9 5.9 0 1 1-5.9-5.9c.3 0 .7.02 1 .07v3.1a2.8 2.8 0 1 0 1.9 2.66V3h3z"/></svg></a>
+        <a href="https://wa.me/358449184077" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.32A10 10 0 1 0 12 2zm0 18.2c-1.5 0-2.9-.4-4.1-1.1l-.3-.18-3 .8.8-2.93-.2-.31a8.2 8.2 0 1 1 6.8 3.72zm4.6-6.1c-.25-.13-1.5-.74-1.73-.82-.23-.09-.4-.13-.56.12-.17.25-.64.82-.79.99-.14.17-.29.19-.54.06a6.7 6.7 0 0 1-3.35-2.93c-.25-.43.25-.4.72-1.34.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.07 0 1.22.9 2.4 1.02 2.57.13.17 1.77 2.7 4.28 3.79.6.26 1.06.41 1.43.53.6.19 1.14.16 1.57.1.48-.07 1.5-.61 1.7-1.2.21-.58.21-1.08.15-1.19-.06-.1-.23-.17-.48-.29z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5 data-fi="Palvelut" data-en="Services">Palvelut</h5>
+      <ul>
+        <li><a href="#menu" data-fi="Valikko" data-en="Menu">Valikko</a></li>
+        <li><a href="#reservation" target="_blank" rel="noopener" data-fi="Varaa pöytä" data-en="Book a table">Varaa pöytä</a></li>
+        <li><a href="https://wolt.com/fi/fin/helsinki/restaurant/sano-nepal" target="_blank" rel="noopener" data-fi="Verkkotilaus" data-en="Online order">Verkkotilaus</a></li>
+        <li><a href="#lounas" data-fi="Lounas" data-en="Lunch">Lounas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 data-fi="Tiedot" data-en="Info">Tiedot</h5>
+      <ul>
+        <li><a href="#alku" data-fi="Etusivu" data-en="Home">Etusivu</a></li>
+        <li><a href="#parhaat" data-fi="Parhaat ruokamme" data-en="Our best dishes">Parhaat ruokamme</a></li>
+        <li><a href="#loyda" data-fi="Ota yhteyttä" data-en="Contact">Ota yhteyttä</a></li>
+        <li><a href="https://instagram.com/sanonepal" target="_blank" rel="noopener">Instagram @sanonepal</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">©2026 Sano Nepal — All rights reserved</div>
+</footer>
+
+<button id="toTop" aria-label="Takaisin ylös">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+const MENU = {
+  "Tilatuimmat": [
+    ["2 KPL Butter Chicken Annos","Kaksi annosta · tandoorikanaa tomaattikermakastikkeessa","29.50|35.80"],
+    ["Butter Chicken","","17.90"],
+    ["Tofu Masala","","15.90"],
+    ["Butter Tofu","","16.90"],
+    ["Shahi Paneer (Paneer Rajwadi)","","16.90"],
+    ["Lamb Chili Kofta 🌶🌶","","17.90"],
+    ["Mango Lassi 0,33l","","5.90"],
+    ["Okra Curry Masala (G, L, V)","","15.90"],
+    ["Chicken Tikka Masala","","17.90"],
+    ["Tikka Momos (Chef special)","","17.90"],
+    ["Naan Bread","","3.50"],
+    ["Chicken Biryani","","16.90"],
+  ],
+  "COMBO PACK OFFER!!": [
+    ["2 KPL Butter Chicken Annos","Kaksi annosta · tandoorikanaa tomaattikermakastikkeessa","29.50|35.80"],
+    ["2 KPL Chicken Butter Masala (LGP)","Kaksi annosta · tandoorigrillattua kananrintafiletta","29.50|35.80"],
+    ["2 KPL Chicken Tika Masala Annos","Kaksi annosta · tandoorimarinoitua kanaa tomaattikastikkeessa","29.50|35.80"],
+    ["2 KPL Tofu Masala Annos","Kaksi annosta · tofua maustetussa masalakastikkeessa","29.50|31.80"],
+  ],
+  "Lunch": [
+    ["Tofu Masala","","15.90"],
+    ["Palak Paneer","","15.90"],
+    ["Aalu Baingan","","15.90"],
+  ],
+  "Starters": [
+    ["Veg Samosa (2 KPL)","Friteerattu kasvispiiras","7.90"],
+    ["Meat Samosa (2 KPL)","Kanan ja lampaan jauhelihalla","9.90"],
+    ["Chicken fried 4KPL (southern fried)","","9.90"],
+    ["Chicken 65 (10 pcs)","","11.90"],
+    ["Badam Sadeko 🌶","","8.90"],
+    ["Chicken Pakora","","8.90"],
+    ["Paneer Pakora","","8.90"],
+    ["Shrimp Pakora","","9.90"],
+    ["Chicken Salad","","9.90"],
+    ["Chicken Soup 🌶","","8.90"],
+    ["Halloumitikut 5 kpl","","8.90"],
+    ["Spring rolls 5 KPL","","7.90"],
+    ["Shrimp Torpedo 5 KPL","","7.90"],
+    ["Edamame in pod","","5.90"],
+  ],
+  "Vegan dishes": [
+    ["Vegan Kofta (L, G, V)","","15.90"],
+    ["Tofu Chilli (L, G, V) 🌶🌶","","15.90"],
+    ["Tofu Korma","","15.90"],
+    ["Tofu Saag","","15.90"],
+    ["Alu Gobi Tofu Masala","","15.90"],
+    ["Tofu Masala","","14.90"],
+    ["Alu Gobi","","15.90"],
+    ["Okra Curry Masala (G, L, V)","","15.90"],
+  ],
+  "Vegetarian dishes": [
+    ["Malai Kofta (G)","","16.90"],
+    ["Shahi Paneer (Paneer Rajwadi)","","16.90"],
+    ["Paneer Tikka  🌶","","17.90"],
+    ["Butter Tofu","","16.90"],
+    ["Paneer Chilli  🌶","","16.90"],
+    ["Palak Paneer","","16.90"],
+    ["KADAI PANEER (G)","","16.90"],
+    ["Paneer Tikka  Masala","","16.90"],
+  ],
+  "Chicken dishes": [
+    ["Butter Chicken","","17.90"],
+    ["Jimbu Chicken curry","","17.90"],
+    ["Chicken Tikka Masala","","17.90"],
+    ["Chicken Korma","","17.90"],
+    ["Chicken Chili 🌶🌶","","17.90"],
+    ["Chicken Vindaloo 🌶🌶","","17.90"],
+    ["Chicken Tikka 🌶","","17.90"],
+    ["Chicken Saag","","17.90"],
+    ["Coconut Chicken","","17.90"],
+    ["Garlic Chicken","","17.90"],
+    ["Chicken Curry","","16.90"],
+  ],
+  "Lamb dishes": [
+    ["Butter Lamb","","17.90"],
+    ["Lamb Tikka 🌶","","18.90"],
+    ["Lamb Masala (L, G)","","17.90"],
+    ["Lamb Chili Kofta 🌶🌶","","17.90"],
+    ["Lamb Tikka Masala 🌶","","18.90"],
+    ["Lamb Vindaloo 🌶🌶","","17.90"],
+    ["Lamb Saag","","17.90"],
+    ["Lamb Curry (L, G, P)","","17.90"],
+  ],
+  "Shrimps and Fish dishes": [
+    ["Shrimp(rapu) Saag","","18.90"],
+    ["Prawn Korma","","18.90"],
+    ["Prawn Chili  🌶🌶","","18.90"],
+    ["Prawn Masala 🌶","","18.90"],
+    ["Butter Prawn","","18.90"],
+    ["Butter Shrimp","","18.90"],
+    ["Fish Chilli 🌶🌶","","18.90"],
+    ["Fish Curry 🌶","","18.90"],
+    ["Fish Masala 🌶","","18.90"],
+    ["Garlic King Prawns (G,L,P)🌶","","18.90"],
+  ],
+  "MOMOS": [
+    ["Steam MoMo","","14.90"],
+    ["Butter Chicken  Momos (10 pcs)","","17.90"],
+    ["Tikka Momos (Chef special)","","17.90"],
+  ],
+  "Noodle & Biryani": [
+    ["Shrimps Chowmein Noodle","","17.90"],
+    ["Chicken Chowmein","","16.90"],
+    ["Veg Noodle","","14.90"],
+    ["Veg Biryani","","15.90"],
+    ["Chicken Biryani","","16.90"],
+    ["Lamb Biryani","","17.90"],
+  ],
+  "Nepal house specials": [
+    ["Mix Tikka","","20.90"],
+    ["Mix Sizzler","","21.90"],
+  ],
+  "Extra ??": [
+    ["Naan Bread","","3.50"],
+    ["Cheese Naan Bread","","4.90"],
+    ["Valkosipuli naan Bread !!","","3.90"],
+    ["Papad bread 2KPL","","2.50"],
+    ["Extra hot chili sauce  🌶 🌶 🌶","","1.90"],
+    ["Extra rice","","3.90"],
+    ["Raita","","2.50"],
+  ],
+  "Drinks": [
+    ["Mango Lassi 0,33l","","5.90"],
+    ["Salty Lassi 0,33l","","5.90"],
+    ["Vegan Mango Lassi 0,33l","","5.90"],
+    ["Novelle-kivennäisvesi 0,33l","","3.50"],
+    ["Coca-Cola 0,33l","","3.50"],
+    ["Coca-Cola Zero 0,33l","","3.50"],
+    ["Old Jamaica Ginger Beer 0.33L","","4.90"],
+    ["Coca-Cola 1,5l","","7.90"],
+    ["Pepsi max 1,5l","","6.90"],
+  ],
+};
+const tabs = document.getElementById('tabs'), list = document.getElementById('list');
+Object.keys(MENU).forEach((k, i) => {
+  const b = document.createElement('button');
+  b.textContent = k; if (i === 0) b.classList.add('active');
+  b.onclick = () => { tabs.querySelectorAll('button').forEach(x => x.classList.remove('active')); b.classList.add('active'); render(k); };
+  tabs.appendChild(b);
+});
+function render(k) {
+  list.innerHTML = MENU[k].map(([n, d, p]) => {
+    const [pr, old] = p.split('|');
+    const priceHtml = old
+      ? `<span style="text-decoration:line-through;color:var(--muted);font-size:.85rem;margin-right:.55rem">${old.replace('.', ',')} €</span>${pr.replace('.', ',')} €`
+      : `${pr.replace('.', ',')} €`;
+    return `<div class="dish"><div><b>${n}</b>${d ? `<small>${d}</small>` : ''}</div><div class="p">${priceHtml}</div></div>`;
+  }).join('');
+}
+render(Object.keys(MENU)[0]);
+
+/* scrollspy + header + toTop */
+const hdr = document.getElementById('hdr'), toTop = document.getElementById('toTop');
+const navLinks = [...document.querySelectorAll('header nav a.nl')];
+const secIds = ['alku','lounas','menu','loyda','reservation','galleria'];
+addEventListener('scroll', () => {
+  hdr.classList.toggle('scrolled', scrollY > 40);
+  toTop.classList.toggle('show', scrollY > 600);
+  let cur = 'alku';
+  secIds.forEach(id => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < 140) cur = id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+}, {passive:true});
+toTop.onclick = () => scrollTo({top:0, behavior:'smooth'});
+
+/* lingua FI / EN — traduzione completa della pagina */
+const btnFI = document.getElementById('btnFI'), btnEN = document.getElementById('btnEN');
+function setLang(l){
+  btnFI.classList.toggle('on', l==='fi'); btnEN.classList.toggle('on', l==='en');
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-fi]').forEach(el => { if (el.dataset[l]) el.textContent = el.dataset[l]; });
+  document.querySelectorAll('[data-fih]').forEach(el => { const v = el.dataset[l + 'h']; if (v) el.innerHTML = v; });
+  document.querySelectorAll('[data-fi-ph]').forEach(el => { const v = el.dataset[l + 'Ph']; if (v) el.placeholder = v; });
+  const sel = document.querySelector('select[name="guests"]');
+  if (sel && sel.selectedIndex === 0) sel.options[0].text = l==='fi' ? 'Valitse vieraiden määrä' : 'Select number of guests';
+}
+btnFI.onclick = () => setLang('fi');
+btnEN.onclick = () => setLang('en');
+
+/* ===== RESERVATION: la prenotazione arriva sul WhatsApp del ristorante ===== */
+document.getElementById('resForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target;
+  if (!f.checkValidity()) { f.reportValidity(); return; }
+  const v = n => f.elements[n].value.trim();
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'fi';
+  const lines = lang === 'en'
+    ? [`New table booking — Sano Nepal`, `Name: ${v('name')}`, `Email: ${v('email')}`,
+       v('phone') ? `Phone: ${v('phone')}` : null, `Guests: ${v('guests')}`, `Date: ${v('bdate')}`, `Time: ${v('btime')}`]
+    : [`Uusi pöytävaraus — Sano Nepal`, `Nimi: ${v('name')}`, `Sähköposti: ${v('email')}`,
+       v('phone') ? `Puhelin: ${v('phone')}` : null, `Vieraat: ${v('guests')}`, `Päivä: ${v('bdate')}`, `Kellonaika: ${v('btime')}`];
+  const msg = lines.filter(Boolean).join('\n');
+  window.open('https://wa.me/358449184077?text=' + encodeURIComponent(msg), '_blank');
+  f.style.display = 'none';
+  document.getElementById('resOk').classList.add('show');
+});
+/* non permettere date passate */
+document.querySelector('input[name="bdate"]').min = new Date().toISOString().split('T')[0];
+
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.08});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
