@@ -163,6 +163,7 @@ header .actions{display:flex;align-items:center;gap:.7rem}
 .dishlist li{display:flex;gap:.85rem;align-items:baseline;font-weight:500;font-size:.95rem}
 .dishlist li .num{font-family:var(--display);color:var(--red);font-weight:700;min-width:1.4rem;flex:none}
 .dishlist li small{display:block;color:var(--muted);font-size:.83rem;font-weight:400}
+.today-line{margin-top:1.3rem;font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--flame);letter-spacing:.02em}
 .buffet-card .incl{margin-top:1.3rem;font-size:.84rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:1rem}
 .buffet-price{margin-top:1.2rem;font-family:var(--display);font-size:1.9rem;font-weight:800;color:var(--title);line-height:1}
 .buffet-price small{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.3rem}
@@ -398,7 +399,7 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
         <p class="incl" data-fi="Jokaiseen annokseen kuuluu: salaattibuffet, basmatiriisi TAI haudutetut kasvikset, naan-leipä sekä kahvi tai nepalilainen tee. L = laktoositon · P = maapähkinätön · G = gluteeniton · V = vegaaninen. Ruoka voidaan tarvittaessa tehdä tulisempana."
            data-en="Each dish includes: buffet salads, Basmati rice OR stewed vegetables, naan bread and coffee or Nepalese tea. L = lactose-free · P = peanut-free · G = gluten-free · V = vegan. Food can be made spicier on request.">Jokaiseen annokseen kuuluu: salaattibuffet, basmatiriisi TAI haudutetut kasvikset, naan-leipä sekä kahvi tai nepalilainen tee. L = laktoositon · P = maapähkinätön · G = gluteeniton · V = vegaaninen. Ruoka voidaan tarvittaessa tehdä tulisempana.</p>
         <div class="buffet-price">13,50 €<small data-fi="henkilöltä · lounasaikaan" data-en="per person · at lunchtime">henkilöltä · lounasaikaan</small></div>
-        <p style="margin-top:1.3rem"><a class="btn btn-fire" style="font-size:.8rem" href="#reservation" data-fi="Varaa lounaspöytä" data-en="Book a lunch table">Varaa lounaspöytä</a></p>
+        <p class="today-line" id="todayLine"></p>
       </div>
       <figure><img id="dayImg" src="assets2/foto5.jpg" alt="Lounasbuffet"></figure>
     </div>
@@ -731,6 +732,10 @@ function renderDay(){
     b.innerHTML = DAY_NAMES[i][lang] + (i === todayIdx ? '<span class="dot"></span>' : '');
   });
   document.getElementById('dayTitle').textContent = DAY_NAMES[curDay][lang] + (lang ? ' — Lunch Buffet' : ' — Lounasbuffet');
+  const todayEl = document.getElementById('todayLine');
+  todayEl.textContent = lang
+    ? `Today's lunch: ${DAY_NAMES[todayIdx <= 4 ? todayIdx : 0][1]}`
+    : `Tämän päivän lounas: ${DAY_NAMES[todayIdx <= 4 ? todayIdx : 0][0]}`;
   document.getElementById('dayDishes').innerHTML = LUNCH[curDay].dishes.map(([n, en, fi], i) =>
     `<li><span class="num">${i + 1}.</span><span><b style="color:var(--title);font-weight:600">${n}</b><small>${lang ? en : fi}</small></span></li>`).join('');
   document.getElementById('dayImg').src = LUNCH[curDay].img;
@@ -804,6 +809,9 @@ document.getElementById('resForm').addEventListener('submit', async e => {
         _subject: lang === 'en' ? 'New table booking — Sano Nepal' : 'Uusi pöytävaraus — Sano Nepal',
         _template: 'table',
         _captcha: 'false',
+        _autoresponse: lang === 'en'
+          ? "Thank you for your booking! We can't wait to see you — Sano Nepal, Kulmavuorenkatu 4, Helsinki. If you need to change your reservation, just call us at +358 44 9184077."
+          : "Kiitos varauksestasi! Innolla odotamme tapaamistasi — Sano Nepal, Kulmavuorenkatu 4, Helsinki. Jos haluat muuttaa varaustasi, soita meille numeroon +358 44 9184077.",
         Viesti: msg,
         Nimi: v('name'), Sähköposti: v('email'), Puhelin: v('phone') || '—',
         Vieraat: v('guests'), Päivä: v('bdate'), Kellonaika: v('btime')
