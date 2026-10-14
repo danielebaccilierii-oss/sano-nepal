@@ -792,10 +792,12 @@ document.getElementById('resForm').addEventListener('submit', async e => {
   if (!f.checkValidity()) { f.reportValidity(); return; }
   const v = n => f.elements[n].value.trim();
   const lang = document.documentElement.lang === 'en' ? 'en' : 'fi';
+  const now = new Date();
+  const stamp = `${now.toLocaleDateString('fi-FI')} ${now.toLocaleTimeString('fi-FI')}`;
   const lines = lang === 'en'
-    ? [`New table booking — Sano Nepal`, `Name: ${v('name')}`, `Email: ${v('email')}`,
+    ? [`New table booking — Sano Nepal`, `Booking made at: ${stamp}`, `Name: ${v('name')}`, `Email: ${v('email')}`,
        v('phone') ? `Phone: ${v('phone')}` : null, `Guests: ${v('guests')}`, `Date: ${v('bdate')}`, `Time: ${v('btime')}`]
-    : [`Uusi pöytävaraus — Sano Nepal`, `Nimi: ${v('name')}`, `Sähköposti: ${v('email')}`,
+    : [`Uusi pöytävaraus — Sano Nepal`, `Varaus tehty: ${stamp}`, `Nimi: ${v('name')}`, `Sähköposti: ${v('email')}`,
        v('phone') ? `Puhelin: ${v('phone')}` : null, `Vieraat: ${v('guests')}`, `Päivä: ${v('bdate')}`, `Kellonaika: ${v('btime')}`];
   const msg = lines.filter(Boolean).join('\n');
 
