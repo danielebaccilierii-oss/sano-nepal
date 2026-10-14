@@ -152,6 +152,38 @@ header .actions{display:flex;align-items:center;gap:.7rem}
 .buffet-card img{width:100%;height:100%;object-fit:cover}
 @media(max-width:820px){.buffet-card{grid-template-columns:1fr}}
 
+/* ===== LOUNAS: selettore giorni (come waveofflavors.fi) ===== */
+.day-tabs{max-width:1000px;margin:2.2rem auto 0;display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;padding:0 1.4rem}
+.day-tabs button{padding:.6rem 1.35rem;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);
+  font-family:var(--sans);font-weight:700;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.25s}
+.day-tabs button:hover{color:var(--title);border-color:rgba(239,68,68,.45)}
+.day-tabs button.active{background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;border-color:transparent;box-shadow:0 8px 22px rgba(239,68,68,.35)}
+.day-tabs button .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--flame);margin-left:.45rem;vertical-align:middle}
+.dishlist{list-style:none;display:grid;gap:.75rem;margin-top:1.3rem}
+.dishlist li{display:flex;gap:.85rem;align-items:baseline;font-weight:500;font-size:.95rem}
+.dishlist li .num{font-family:var(--display);color:var(--red);font-weight:700;min-width:1.4rem;flex:none}
+.dishlist li small{display:block;color:var(--muted);font-size:.83rem;font-weight:400}
+.buffet-card .incl{margin-top:1.3rem;font-size:.84rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:1rem}
+.buffet-price{margin-top:1.2rem;font-family:var(--display);font-size:1.9rem;font-weight:800;color:var(--title);line-height:1}
+.buffet-price small{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.3rem}
+
+/* ===== GALLERY (feed foto piatti) ===== */
+.gallery{background:var(--bg);padding:5.5rem 1.4rem 6rem}
+.gallery .head{text-align:center;max-width:760px;margin:0 auto 3rem}
+.gallery h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,3.2rem);color:var(--title)}
+.gallery h2 em{font-style:italic;color:var(--red)}
+.gallery .rule{width:64px;height:3px;margin:1.2rem auto 0;background:linear-gradient(90deg,var(--flame),var(--red));border-radius:2px}
+.gallery .head p{margin-top:.8rem;color:var(--muted)}
+.masonry{max-width:1180px;margin:0 auto;columns:3 300px;column-gap:1.1rem}
+.masonry figure{break-inside:avoid;margin:0 0 1.1rem;border-radius:14px;overflow:hidden;border:1px solid var(--line);position:relative}
+.masonry img{width:100%;display:block;transition:transform .7s ease}
+.masonry figure:hover img{transform:scale(1.06)}
+.masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:2rem 1.1rem .9rem;
+  background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;font-size:.8rem;font-weight:600;letter-spacing:.06em;
+  opacity:0;transition:.35s}
+.masonry figure:hover figcaption{opacity:1}
+@media(max-width:640px){.masonry{columns:2 160px}}
+
 /* ===== MENU (tab spalmate in alto) ===== */
 .menu-hero{text-align:center;padding:5rem 1.4rem 0}
 .menu-hero h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,3.2rem);color:var(--title)}
@@ -350,29 +382,25 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
   <div class="center"><a class="pill-btn" style="padding:.85rem 2rem" href="#menu"><span data-fi="Tutustu Valikkoon" data-en="Explore the Menu">Tutustu Valikkoon</span> <span>→</span></a></div>
 </section>
 
-<!-- ===== LOUNAS ===== -->
+<!-- ===== LOUNAS: buffet giornaliero per giorno ===== -->
 <section class="lunch reveal" id="lounas">
   <h2 data-fih="Päivittäinen <em>Lounas</em>" data-enh="Daily <em>Lunch</em>">Päivittäinen <em>Lounas</em></h2>
   <div class="rule"></div>
-  <p data-fi="Koe nepalilainen maku arkisin — päivittäin vaihtuva lounas valmistetaan perinteisillä mausteilla ja tuoreilla raaka-aineilla. Salaattibaari, tuore naan, keitto ja kahvi tai tee sisältyvät."
-     data-en="Experience Nepali flavours on weekdays — a rotating lunch made with traditional spices and fresh ingredients. Salad bar, fresh naan, soup and coffee or tea included.">Koe nepalilainen maku arkisin — päivittäin vaihtuva lounas valmistetaan perinteisillä mausteilla ja tuoreilla raaka-aineilla. Salaattibaari, tuore naan, keitto ja kahvi tai tee sisältyvät.</p>
+  <p data-fi="Joka arkipäivä oma nepalilainen lounasbuffet — seitsemän ruokalajia, päivittäin vaihtuva. Valitse päivä ja katso, mitä tänään on tarjolla."
+     data-en="A different Nepali lunch buffet every weekday — seven dishes, rotating daily. Pick a day and see what's on.">Joka arkipäivä oma nepalilainen lounasbuffet — seitsemän ruokalajia, päivittäin vaihtuva. Valitse päivä ja katso, mitä tänään on tarjolla.</p>
   <div class="days"><span data-fi="Maanantai – Perjantai:" data-en="Monday – Friday:">Maanantai – Perjantai:</span> <span>10:30 – 14:30</span></div>
+  <div class="day-tabs" id="dayTabs"></div>
   <div class="buffet-wrap">
     <div class="buffet-card">
       <div class="txt">
-        <h3 data-fih="Lounas<em>buffet.</em>" data-enh="Lunch <em>buffet.</em>">Lounas<em>buffet.</em></h3>
-        <p data-fi="Päivittäin vaihtuva nepalilainen buffet — et koskaan syö samaa lounasta kahdesti."
-           data-en="A rotating Nepali buffet — you will never eat the same lunch twice.">Päivittäin vaihtuva nepalilainen buffet — et koskaan syö samaa lounasta kahdesti.</p>
-        <ul>
-          <li data-fi="Salaattibaari" data-en="Salad bar">Salaattibaari</li>
-          <li data-fi="Basmatiriisi" data-en="Basmati rice">Basmatiriisi</li>
-          <li data-fi="Tuore naan-leipä" data-en="Fresh naan bread">Tuore naan-leipä</li>
-          <li data-fi="Lämmin keitto" data-en="Warm soup">Lämmin keitto</li>
-          <li data-fi="Kahvi / tee" data-en="Coffee / tea">Kahvi / tee</li>
-        </ul>
-        <p style="margin-top:1.3rem"><a class="btn btn-fire" style="font-size:.8rem" href="#reservation" target="_blank" rel="noopener" data-fi="Varaa lounaspöytä" data-en="Book a lunch table">Varaa lounaspöytä</a></p>
+        <h3 id="dayTitle"></h3>
+        <ul class="dishlist" id="dayDishes"></ul>
+        <p class="incl" data-fi="Jokaiseen annokseen kuuluu: salaattibuffet, basmatiriisi TAI haudutetut kasvikset, naan-leipä sekä kahvi tai nepalilainen tee. L = laktoositon · P = maapähkinätön · G = gluteeniton · V = vegaaninen. Ruoka voidaan tarvittaessa tehdä tulisempana."
+           data-en="Each dish includes: buffet salads, Basmati rice OR stewed vegetables, naan bread and coffee or Nepalese tea. L = lactose-free · P = peanut-free · G = gluten-free · V = vegan. Food can be made spicier on request.">Jokaiseen annokseen kuuluu: salaattibuffet, basmatiriisi TAI haudutetut kasvikset, naan-leipä sekä kahvi tai nepalilainen tee. L = laktoositon · P = maapähkinätön · G = gluteeniton · V = vegaaninen. Ruoka voidaan tarvittaessa tehdä tulisempana.</p>
+        <div class="buffet-price">13,50 €<small data-fi="henkilöltä · lounasaikaan" data-en="per person · at lunchtime">henkilöltä · lounasaikaan</small></div>
+        <p style="margin-top:1.3rem"><a class="btn btn-fire" style="font-size:.8rem" href="#reservation" data-fi="Varaa lounaspöytä" data-en="Book a lunch table">Varaa lounaspöytä</a></p>
       </div>
-      <figure><img src="assets2/foto5.jpg" alt="Lounasbuffet"></figure>
+      <figure><img id="dayImg" src="assets2/foto5.jpg" alt="Lounasbuffet"></figure>
     </div>
   </div>
 </section>
@@ -386,11 +414,30 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
 <div class="menu-tabs">
   <div class="row" id="tabs"></div>
 </div>
-<div class="menu-wrap" id="galleria">
+<div class="menu-wrap">
   <div class="menu-list" id="list"></div>
   <p style="margin-top:1.2rem;font-size:.88rem;color:var(--muted)" data-fi="Täydellinen menu ravintolassa ja Woltissa."
      data-en="Full menu in the restaurant and on Wolt.">Täydellinen menu ravintolassa ja Woltissa.</p>
 </div>
+
+<!-- ===== GALLERY (feed foto — per aggiungere piatti: copia un <figure> e cambia src/caption) ===== -->
+<section class="gallery reveal" id="galleria">
+  <div class="head">
+    <h2 data-fih="Kuva<em>galleria</em>" data-enh="Photo <em>Gallery</em>">Kuva<em>galleria</em></h2>
+    <div class="rule"></div>
+    <p data-fi="Suoraan keittiöstämme — momot, tandoor ja Himalayan makuja." data-en="Straight from our kitchen — momos, tandoor and Himalayan flavours.">Suoraan keittiöstämme — momot, tandoor ja Himalayan makuja.</p>
+  </div>
+  <div class="masonry">
+    <figure><img src="assets2/card-momo.jpg" alt="Mo:Mo"><figcaption>Mo:Mo — Nepalin kansallisruoka</figcaption></figure>
+    <figure><img src="assets2/foto2.jpg" alt="Sano Nepal"><figcaption>Sano Nepal</figcaption></figure>
+    <figure><img src="assets2/card-naan.jpg" alt="Naan"><figcaption>Tandoor &amp; naan</figcaption></figure>
+    <figure><img src="assets2/foto3.jpg" alt="Ravintolasali"><figcaption>Ravintolasali</figcaption></figure>
+    <figure><img src="assets2/card-biryani.jpg" alt="Biryani"><figcaption>Kana-biryani</figcaption></figure>
+    <figure><img src="assets2/foto4.jpg" alt="Sano Nepal"><figcaption>Himalajan makuja</figcaption></figure>
+    <figure><img src="assets2/foto1.jpg" alt="Sano Nepal"><figcaption>Sano Nepal — Sörnäinen</figcaption></figure>
+    <figure><img src="assets2/foto5.jpg" alt="Lounasbuffet"><figcaption>Lounasbuffet</figcaption></figure>
+  </div>
+</section>
 
 <!-- ===== ETSI MEIDÄT ===== -->
 <section class="find reveal" id="loyda">
@@ -499,106 +546,74 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
 
 <script>
 const MENU = {
-  "Tilatuimmat": [
-    ["2 KPL Butter Chicken Annos","Kaksi annosta · tandoorikanaa tomaattikermakastikkeessa","29.50|35.80"],
-    ["Butter Chicken","","17.90"],
-    ["Tofu Masala","","15.90"],
-    ["Butter Tofu","","16.90"],
-    ["Shahi Paneer (Paneer Rajwadi)","","16.90"],
-    ["Lamb Chili Kofta 🌶🌶","","17.90"],
-    ["Mango Lassi 0,33l","","5.90"],
-    ["Okra Curry Masala (G, L, V)","","15.90"],
-    ["Chicken Tikka Masala","","17.90"],
-    ["Tikka Momos (Chef special)","","17.90"],
-    ["Naan Bread","","3.50"],
-    ["Chicken Biryani","","16.90"],
-  ],
-  "COMBO PACK OFFER!!": [
-    ["2 KPL Butter Chicken Annos","Kaksi annosta · tandoorikanaa tomaattikermakastikkeessa","29.50|35.80"],
-    ["2 KPL Chicken Butter Masala (LGP)","Kaksi annosta · tandoorigrillattua kananrintafiletta","29.50|35.80"],
-    ["2 KPL Chicken Tika Masala Annos","Kaksi annosta · tandoorimarinoitua kanaa tomaattikastikkeessa","29.50|35.80"],
-    ["2 KPL Tofu Masala Annos","Kaksi annosta · tofua maustetussa masalakastikkeessa","29.50|31.80"],
-  ],
-  "Lunch": [
-    ["Tofu Masala","","15.90"],
-    ["Palak Paneer","","15.90"],
-    ["Aalu Baingan","","15.90"],
-  ],
   "Starters": [
-    ["Veg Samosa (2 KPL)","Friteerattu kasvispiiras","7.90"],
-    ["Meat Samosa (2 KPL)","Kanan ja lampaan jauhelihalla","9.90"],
-    ["Chicken fried 4KPL (southern fried)","","9.90"],
-    ["Chicken 65 (10 pcs)","","11.90"],
-    ["Badam Sadeko 🌶","","8.90"],
-    ["Chicken Pakora","","8.90"],
-    ["Paneer Pakora","","8.90"],
-    ["Shrimp Pakora","","9.90"],
-    ["Chicken Salad","","9.90"],
-    ["Chicken Soup 🌶","","8.90"],
-    ["Halloumitikut 5 kpl","","8.90"],
-    ["Spring rolls 5 KPL","","7.90"],
-    ["Shrimp Torpedo 5 KPL","","7.90"],
-    ["Edamame in pod","","5.90"],
+    ["Vegan Samosa (P, L)","Deep-fried vegetable pastry filled with potato and beans (2 pieces).","6.50"],
+    ["Meat Samosa","Deep-fried vegetable and chicken pastry filled with potato and beans (2 pieces).","7.90"],
+    ["Badam Sadeko","","8.90"],
+    ["Chicken Pakoda (G, L)","Chicken pieces coated in lentil flour and deep-fried until golden brown.","7.90"],
+    ["Pakoda Paneer","Deep-fried fresh cheese.","7.90"],
+    ["Veg Pakoda (G, L)","Deep-fried vegetables.","6.90"],
+    ["Prawn Pakoda","Deep-fried prawns.","8.90"],
+    ["Halloumi Sticks 5 pcs","","8.90"],
   ],
-  "Vegan dishes": [
-    ["Vegan Kofta (L, G, V)","","15.90"],
-    ["Tofu Chilli (L, G, V) 🌶🌶","","15.90"],
-    ["Tofu Korma","","15.90"],
-    ["Tofu Saag","","15.90"],
-    ["Alu Gobi Tofu Masala","","15.90"],
-    ["Tofu Masala","","14.90"],
-    ["Alu Gobi","","15.90"],
-    ["Okra Curry Masala (G, L, V)","","15.90"],
-  ],
-  "Vegetarian dishes": [
-    ["Malai Kofta (G)","","16.90"],
-    ["Shahi Paneer (Paneer Rajwadi)","","16.90"],
-    ["Paneer Tikka  🌶","","17.90"],
-    ["Butter Tofu","","16.90"],
-    ["Paneer Chilli  🌶","","16.90"],
-    ["Palak Paneer","","16.90"],
-    ["KADAI PANEER (G)","","16.90"],
-    ["Paneer Tikka  Masala","","16.90"],
-  ],
-  "Chicken dishes": [
-    ["Butter Chicken","","17.90"],
-    ["Jimbu Chicken curry","","17.90"],
-    ["Chicken Tikka Masala","","17.90"],
-    ["Chicken Korma","","17.90"],
-    ["Chicken Chili 🌶🌶","","17.90"],
-    ["Chicken Vindaloo 🌶🌶","","17.90"],
-    ["Chicken Tikka 🌶","","17.90"],
-    ["Chicken Saag","","17.90"],
-    ["Coconut Chicken","","17.90"],
-    ["Garlic Chicken","","17.90"],
-    ["Chicken Curry","","16.90"],
-  ],
-  "Lamb dishes": [
-    ["Butter Lamb","","17.90"],
-    ["Lamb Tikka 🌶","","18.90"],
-    ["Lamb Masala (L, G)","","17.90"],
-    ["Lamb Chili Kofta 🌶🌶","","17.90"],
-    ["Lamb Tikka Masala 🌶","","18.90"],
-    ["Lamb Vindaloo 🌶🌶","","17.90"],
-    ["Lamb Saag","","17.90"],
-    ["Lamb Curry (L, G, P)","","17.90"],
-  ],
-  "Shrimps and Fish dishes": [
-    ["Shrimp(rapu) Saag","","18.90"],
-    ["Prawn Korma","","18.90"],
-    ["Prawn Chili  🌶🌶","","18.90"],
-    ["Prawn Masala 🌶","","18.90"],
-    ["Butter Prawn","","18.90"],
-    ["Butter Shrimp","","18.90"],
-    ["Fish Chilli 🌶🌶","","18.90"],
-    ["Fish Curry 🌶","","18.90"],
-    ["Fish Masala 🌶","","18.90"],
-    ["Garlic King Prawns (G,L,P)🌶","","18.90"],
+  "Soups": [
+    ["Hot N Sour Soup","","7.90"],
+    ["Chicken Soup","","7.90"],
+    ["Vegan Soup","","6.90"],
   ],
   "MOMOS": [
     ["Steam MoMo","","14.90"],
-    ["Butter Chicken  Momos (10 pcs)","","17.90"],
-    ["Tikka Momos (Chef special)","","17.90"],
+    ["Butter Chicken MoMo (10 pcs)","","17.90"],
+    ["Tikka MoMo (Chef special)","","17.90"],
+  ],
+  "Vegan dishes": [
+    ["Vegan Kofta (V, G, L)","Specially prepared vegan kofta cooked in a rich coconut cream sauce. Served with basmati rice and vegan naan bread.","14.90"],
+    ["Tofu Chilli (V, G, L)","Deep-fried tofu with roasted bell pepper and chilli in a spicy garlic, onion, ginger, soy and tomato sauce.","14.90"],
+    ["Tofu Korma","","14.90"],
+    ["Tofu Saag","","14.90"],
+    ["Aalu Gobi Tofu Masala","","14.90"],
+    ["Tofu Masala","","14.90"],
+  ],
+  "Vegetarian dishes": [
+    ["Malai Kofta (G)","","15.90"],
+    ["Shahi Paneer","","15.90"],
+    ["Palak Paneer","","15.90"],
+    ["Paneer Tikka","","15.90"],
+    ["Kadai Paneer (G)","","15.90"],
+    ["Paneer Chilli","","15.90"],
+    ["Paneer Tikka Masala","","15.90"],
+  ],
+  "Chicken dishes": [
+    ["Butter Chicken (G)","","16.90"],
+    ["Chicken Tikka Masala","","16.90"],
+    ["Chicken Korma","","16.90"],
+    ["Chicken Chilli","","16.90"],
+    ["Chicken Vindaloo","","16.90"],
+    ["Chicken Tikka","","16.90"],
+    ["Chicken Saag","","16.90"],
+    ["Coconut Chicken","","16.90"],
+    ["Garlic Chicken","","16.90"],
+    ["Chicken Curry","","16.90"],
+    ["Pepper Chicken (G, L)","Basmati rice and naan bread included.","16.99"],
+    ["Spiced Hummus Chicken","Basmati rice and naan bread included.","15.99"],
+    ["Gimbu Chicken (G, L)","","16.90"],
+  ],
+  "Lamb dishes": [
+    ["Butter Lamb","","17.90"],
+    ["Lamb Tikka","","17.90"],
+    ["Lamb Masala (G, L)","","17.90"],
+    ["Lamb Chilli","","17.90"],
+    ["Lamb Vindaloo","","17.90"],
+    ["Lamb Curry (L, P, G)","Braised lamb chops in a tomato-onion sauce.","17.90"],
+    ["Lamb Saag","Slow-cooked lamb in a spiced sauce of puréed green spinach.","17.90"],
+  ],
+  "Shrimps and Fish": [
+    ["Prawn Korma","","18.90"],
+    ["Prawn Saag","","18.90"],
+    ["Prawn Chilli","","18.90"],
+    ["Butter Prawn","","18.90"],
+    ["Fish Chilli (P, L, G)","Tilapia fillet with ginger, onion, bell pepper and soy sauce.","18.90"],
+    ["Garlic King Prawns (G, L, P)","","18.90"],
   ],
   "Noodle & Biryani": [
     ["Shrimps Chowmein Noodle","","17.90"],
@@ -607,32 +622,79 @@ const MENU = {
     ["Veg Biryani","","15.90"],
     ["Chicken Biryani","","16.90"],
     ["Lamb Biryani","","17.90"],
+    ["Pokhara Fried Rice","Classic fried rice with your choice of protein and mixed vegetables. Contains coriander.","14.99"],
   ],
   "Nepal house specials": [
-    ["Mix Tikka","","20.90"],
-    ["Mix Sizzler","","21.90"],
+    ["Mix Tikka","Special mixed tikka of chicken, lamb and vegetables.","19.90"],
+    ["Mix Sizzler","Special mixed sizzler of chicken, lamb and vegetables.","20.90"],
   ],
-  "Extra ??": [
+  "Sides": [
     ["Naan Bread","","3.50"],
     ["Cheese Naan Bread","","4.90"],
-    ["Valkosipuli naan Bread !!","","3.90"],
-    ["Papad bread 2KPL","","2.50"],
-    ["Extra hot chili sauce  🌶 🌶 🌶","","1.90"],
-    ["Extra rice","","3.90"],
+    ["Garlic Naan Bread","","3.90"],
+    ["Papad Bread 2 pcs","","2.50"],
+    ["Extra Hot Chili Sauce","","1.90"],
+    ["Extra Rice","","3.90"],
     ["Raita","","2.50"],
   ],
   "Drinks": [
-    ["Mango Lassi 0,33l","","5.90"],
-    ["Salty Lassi 0,33l","","5.90"],
-    ["Vegan Mango Lassi 0,33l","","5.90"],
-    ["Novelle-kivennäisvesi 0,33l","","3.50"],
     ["Coca-Cola 0,33l","","3.50"],
     ["Coca-Cola Zero 0,33l","","3.50"],
+    ["Mango Lassi 0,33l","","5.90"],
     ["Old Jamaica Ginger Beer 0.33L","","4.90"],
     ["Coca-Cola 1,5l","","7.90"],
-    ["Pepsi max 1,5l","","6.90"],
+    ["Coca-Cola Zero 1,5l","","6.90"],
   ],
 };
+/* ===== LOUNAS: buffet di ogni giorno (dal PDF del proprietario).
+   Per cambiare i piatti di un giorno modifica le voci qui sotto. ===== */
+const LUNCH = [
+  { img:"assets2/foto5.jpg", dishes:[
+    ["Fish Chilli (P, L)","Deep-fried pangasius fillet in soy chilli sauce","Pangasiussiivu uppopaistuna soija-chilikastikkeessa"],
+    ["Noodle (P, L)","Noodles and vegetables seasoned with herbs and spices","Nuudeleita ja kasviksia yrteillä ja mausteilla"],
+    ["Dal / Lentil (V, P, L, G)","Lentils dal cooked in oil with cumin seeds, onions, tomatoes, garlic, ginger and turmeric","Linssidal kuminalla, sipulilla, tomaatilla, valkosipulilla, inkiväärillä ja kurkumalla"],
+    ["Palak Paneer (P, G)","Cottage cheese in spinach, ginger and curry cream sauce","Tuorejuusto pinaatti-inkivääri-currykermakastikkeessa"],
+    ["Tofu Masala (V, P, L, G)","Tofu pieces in herb, ginger, garlic and onion masala sauce","Tofu yrtti-inkivääri-valkosipuli-sipulimasalakastikkeessa"],
+    ["Butter Chicken (G)","Tandoori grill chicken pieces in tomato butter cream sauce","Tandoorissa grillattua kanaa tomaatti-voikermakastikkeessa"],
+    ["Lamb Kofta Masala (P, L, G)","Lamb meatballs with garlic and ginger in masala sauce","Lihapullat valkosipulilla ja inkiväärillä masalakastikkeessa"],
+  ]},
+  { img:"assets2/foto3.jpg", dishes:[
+    ["Butter Rapu (P, L)","Shrimps with tomato butter cream sauce","Katkarapuja tomaatti-voikermakastikkeessa"],
+    ["Noodle (P, L)","Noodles and vegetables seasoned with herbs and spices","Nuudeleita ja kasviksia yrteillä ja mausteilla"],
+    ["Dal / Lentil (V, P, L, G)","Lentils dal cooked in oil with cumin seeds, onions, tomatoes, garlic, ginger and turmeric","Linssidal kuminalla, sipulilla, tomaatilla, valkosipulilla, inkiväärillä ja kurkumalla"],
+    ["Saag Kofta (P, G)","Vegetable balls in spinach curry cream sauce","Kasvispalloja pinaatticurrykermakastikkeessa"],
+    ["Tofu Chana Masala (V, P, L, G)","Tofu pieces and chickpeas in herb, ginger and garlic masala sauce","Tofu ja kikherneet yrtti-inkivääri-valkosipulimasalakastikkeessa"],
+    ["Chicken Kadai (P, G)","Chicken pieces with capsicum and onion in masala & tomato butter cream sauce","Kanaa paprikalla ja sipulilla masala-tomaattivoikermakastikkeessa"],
+    ["Lamb Kofta Chilli (P, L, G)","Lamb meatballs, capsicum and onion with ginger, garlic and soya chilli sauce","Lihapullat, paprika ja sipuli inkiväärin, valkosipulin ja soija-chilikastikkeen kanssa"],
+  ]},
+  { img:"assets2/foto2.jpg", dishes:[
+    ["Chicken Tikka (G)","Tandoori grilled chicken pieces with capsicum and onion in soy chilli sauce","Tandoorissa grillattua kanaa paprikalla ja sipulilla soija-chilikastikkeessa"],
+    ["Noodle (P, L)","Noodles and vegetables seasoned with herbs and spices","Nuudeleita ja kasviksia yrteillä ja mausteilla"],
+    ["Dal / Lentil (V, P, L, G)","Lentils dal cooked in oil with cumin seeds, onions, tomatoes, garlic, ginger and turmeric","Linssidal kuminalla, sipulilla, tomaatilla, valkosipulilla, inkiväärillä ja kurkumalla"],
+    ["Malai Kofta (G)","Vegetable balls with cheese in tomato butter cream sauce","Kasvispalloja juustolla tomaatti-voikermakastikkeessa"],
+    ["Vegan Masala (V, P, L, G)","Potato, cauliflower, tofu pieces and chickpeas with herb, ginger and garlic in vegan masala sauce","Perunaa, kukkakaalia, tofua ja kikherneitä vegaanisessa masalakastikkeessa"],
+    ["Chicken Chilli (G)","Fried chicken pieces with onion and capsicum in soya tomato chilli sauce","Paistettua kanaa sipulilla ja paprikalla soija-tomaattichilikastikkeessa"],
+    ["Lamb Saag (P, G)","Lamb pieces in spinach and ginger curry cream sauté","Lammasta pinaatin ja inkiväärin currykermapadassa"],
+  ]},
+  { img:"assets2/foto4.jpg", dishes:[
+    ["Chicken Chilli (G)","Fried chicken pieces with onion and capsicum in soya tomato chilli sauce","Paistettua kanaa sipulilla ja paprikalla soija-tomaattichilikastikkeessa"],
+    ["Noodle (P, L)","Noodles and vegetables seasoned with herbs and spices","Nuudeleita ja kasviksia yrteillä ja mausteilla"],
+    ["Dal / Lentil (V, P, L, G)","Lentils dal cooked in oil with cumin seeds, onions, tomatoes, garlic, ginger and turmeric","Linssidal kuminalla, sipulilla, tomaatilla, valkosipulilla, inkiväärillä ja kurkumalla"],
+    ["Shahi Paneer (G)","Cottage cheese in tomato butter cream sauce","Tuorejuusto tomaatti-voikermakastikkeessa"],
+    ["Tofu Saag (V, P, L, G)","Tofu pieces with spinach and ginger in curry coconut cream sauce","Tofu pinaatin ja inkiväärin kanssa curry-kookoskermakastikkeessa"],
+    ["Chicken Tikka Masala (P, G)","Tandoori grilled chicken pieces in herb, ginger, garlic and onion masala sauce","Tandoorissa grillattua kanaa yrtti-inkivääri-valkosipuli-sipulimasalakastikkeessa"],
+    ["Lamb Curry (P, L, G)","Lamb pieces in herb, ginger and garlic curry","Lammasta yrteillä, inkiväärillä ja valkosipulilla"],
+  ]},
+  { img:"assets2/foto1.jpg", dishes:[
+    ["Rapu Saag (P, G)","Shrimps and spinach with ginger, garlic curry sauce","Katkarapuja ja pinaattia inkiväärin ja valkosipulin currykastikkeessa"],
+    ["Noodle (P, L)","Noodles and vegetables seasoned with herbs and spices","Nuudeleita ja kasviksia yrteillä ja mausteilla"],
+    ["Dal / Lentil (V, P, L, G)","Lentils dal cooked in oil with cumin seeds, onions, tomatoes, garlic, ginger and turmeric","Linssidal kuminalla, sipulilla, tomaatilla, valkosipulilla, inkiväärillä ja kurkumalla"],
+    ["Paneer Kadai (G)","Cottage cheese in masala and tomato butter cream sauce","Tuorejuusto masala- ja tomaattivoikermakastikkeessa"],
+    ["Vegan Kofta Chilli (V, P, L, G)","Vegetable balls with ginger and garlic in soy chilli sauce","Kasvispalloja inkiväärillä ja valkosipulilla soija-chilikastikkeessa"],
+    ["Butter Chicken (G)","Tandoori grill chicken pieces in tomato butter cream sauce","Tandoorissa grillattua kanaa tomaatti-voikermakastikkeessa"],
+    ["Lamb Masala (P, L, G)","Lamb pieces in herb, ginger and garlic with onion masala sauce","Lammasta yrteillä, inkiväärillä ja valkosipulilla sipulimasalakastikkeessa"],
+  ]},
+];
 const tabs = document.getElementById('tabs'), list = document.getElementById('list');
 Object.keys(MENU).forEach((k, i) => {
   const b = document.createElement('button');
@@ -650,6 +712,30 @@ function render(k) {
   }).join('');
 }
 render(Object.keys(MENU)[0]);
+
+/* ===== LOUNAS: selettore giorni — apre sul giorno corrente ===== */
+const DAY_NAMES = [["Maanantai","Monday"],["Tiistai","Tuesday"],["Keskiviikko","Wednesday"],["Torstai","Thursday"],["Perjantai","Friday"]];
+const dayTabs = document.getElementById('dayTabs');
+const todayIdx = (new Date().getDay() + 6) % 7; /* 0=lun ... 4=ven, weekend -> fuori range */
+let curDay = todayIdx <= 4 ? todayIdx : 0;
+DAY_NAMES.forEach((names, i) => {
+  const b = document.createElement('button');
+  b.innerHTML = names[0] + (i === todayIdx ? '<span class="dot"></span>' : '');
+  b.onclick = () => { curDay = i; renderDay(); };
+  dayTabs.appendChild(b);
+});
+function renderDay(){
+  const lang = document.documentElement.lang === 'en' ? 1 : 0;
+  [...dayTabs.children].forEach((b, i) => {
+    b.classList.toggle('active', i === curDay);
+    b.innerHTML = DAY_NAMES[i][lang] + (i === todayIdx ? '<span class="dot"></span>' : '');
+  });
+  document.getElementById('dayTitle').textContent = DAY_NAMES[curDay][lang] + (lang ? ' — Lunch Buffet' : ' — Lounasbuffet');
+  document.getElementById('dayDishes').innerHTML = LUNCH[curDay].dishes.map(([n, en, fi], i) =>
+    `<li><span class="num">${i + 1}.</span><span><b style="color:var(--title);font-weight:600">${n}</b><small>${lang ? en : fi}</small></span></li>`).join('');
+  document.getElementById('dayImg').src = LUNCH[curDay].img;
+}
+renderDay();
 
 /* scrollspy + header + toTop */
 const hdr = document.getElementById('hdr'), toTop = document.getElementById('toTop');
@@ -674,6 +760,7 @@ function setLang(l){
   document.querySelectorAll('[data-fi-ph]').forEach(el => { const v = el.dataset[l + 'Ph']; if (v) el.placeholder = v; });
   const sel = document.querySelector('select[name="guests"]');
   if (sel && sel.selectedIndex === 0) sel.options[0].text = l==='fi' ? 'Valitse vieraiden määrä' : 'Select number of guests';
+  renderDay();
 }
 btnFI.onclick = () => setLang('fi');
 btnEN.onclick = () => setLang('en');
