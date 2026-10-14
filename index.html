@@ -491,7 +491,9 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
       </div>
       <div class="grid2">
         <input type="date" name="bdate" required>
-        <input type="time" name="btime" required>
+        <select name="btime" required>
+          <option value="" disabled selected data-fi="Valitse kellonaika" data-en="Select time">Valitse kellonaika</option>
+        </select>
       </div>
       <button type="submit" data-fi="Varaa pöytä" data-en="Reserve a Table">Varaa pöytä</button>
       <p class="note" data-fi="Varaus lähetetään ravintolan sähköpostiin ja WhatsAppiin."
@@ -827,6 +829,19 @@ document.getElementById('resForm').addEventListener('submit', async e => {
 });
 /* non permettere date passate */
 document.querySelector('input[name="bdate"]').min = new Date().toISOString().split('T')[0];
+/* orari disponibili: 10:00 – 21:30 ogni 30 min */
+(function(){
+  const sel = document.querySelector('select[name="btime"]');
+  for (let h = 10; h <= 21; h++) {
+    ['00','30'].forEach(m => {
+      if (h === 21 && m === '30') return;
+      const t = h + ':' + m;
+      const o = document.createElement('option');
+      o.value = t; o.textContent = t;
+      sel.appendChild(o);
+    });
+  }
+})();
 
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.08});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
