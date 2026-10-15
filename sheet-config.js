@@ -10,4 +10,4 @@
    From then on the website reads everything from your sheet —
    edit the sheet only, the site updates by itself.
    ============================================================ */
-const SHEET_ID = "";
+const SHEET_ID = "1LiWr97IzM2D21kxs6PskkKn1Qcxv7J3kjxpSRwCUAnM";

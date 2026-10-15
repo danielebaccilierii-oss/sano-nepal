@@ -761,7 +761,12 @@ function gviz(tab){
     .then(r => r.text())
     .then(t => {
       const json = JSON.parse(t.substring(t.indexOf('{'), t.lastIndexOf('}') + 1));
-      return (json.table.rows || []).map(r => (r.c || []).map(c => (c && c.v != null) ? c.v : ''));
+      return (json.table.rows || []).map(r => (r.c || []).map(c => {
+        if (!c || c.v == null) return '';
+        /* prefer the formatted value: prices pasted as "6.50" are stored as time values,
+           where c.v is "Date(1899,11,30,6,50,0)" but c.f is the correct "6.50" */
+        return c.f != null ? c.f : c.v;
+      }));
     });
 }
 function normPrice(v){
