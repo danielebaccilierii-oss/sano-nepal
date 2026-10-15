@@ -1,24 +1,16 @@
-# Sano Nepal — Restaurant Website
+# Sano Nepal — website
 
-Single-page website for **Sano Nepal**, a Nepalese restaurant in Sörnäinen, Helsinki.
+Restaurant website for Sano Nepal, S�rn�inen, Helsinki.
+Single-file static site (index.html) with inline CSS and JS, Google Fonts, FI/EN toggle, light/dark theme, daily lunch buffet selector, table booking by email and WhatsApp.
 
-## Structure
+## Editing without code (Google Sheet)
 
-- `index.html` — one self-contained file with inline CSS and JavaScript (no build step, no dependencies)
-- `assets2/` — photography used across the page (dish cards and gallery images)
+Menu, lunch buffet and gallery photos can be managed from a Google Sheet:
 
-## Features
+1. Create the sheet using the CSV templates (tabs named exactly: `Menu`, `Lunch`, `Gallery`).
+2. File > Share > Publish to web.
+3. Copy the Sheet ID from its URL and paste it into `sheet-config.js`, then commit.
+4. From then on, edit the sheet only -- the site updates itself.
+If `sheet-config.js` has no ID, the site falls back to the built-in data.
 
-- **Bilingual FI / EN toggle** — every text node carries `data-fi` / `data-en` attributes, swapped by a small JavaScript toggle; Finnish is the default
-- **Table booking via WhatsApp** — the reservation form composes a pre-filled message and opens a `wa.me` link, so booking requests land directly on the restaurant's phone
-- **Google Fonts** — Playfair Display for headings, Outfit for body text
-- Links out to the restaurant's Wolt page, Instagram, and phone number
-
-## Preview locally
-
-Open `index.html` in any browser, or serve the folder:
-
-```sh
-python -m http.server 8000
-# then visit http://localhost:8000
-```
+Preview locally: run `python -m http.server 8000` in this folder and open http://localhost:8000

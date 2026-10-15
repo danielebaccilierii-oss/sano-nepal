@@ -547,12 +547,13 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
+<script src="sheet-config.js"></script>
 <script>
 const MENU = {
   "Starters": [
     ["Vegan Samosa (P, L)","Deep-fried vegetable pastry filled with potato and beans (2 pieces).","6.50"],
     ["Meat Samosa","Deep-fried vegetable and chicken pastry filled with potato and beans (2 pieces).","7.90"],
-    ["Badam Sadeko","","8.90"],
+    ["Badam Sadeko","Nepalese style peanut marinate salad, coriander included.","8.90"],
     ["Chicken Pakoda (G, L)","Chicken pieces coated in lentil flour and deep-fried until golden brown.","7.90"],
     ["Pakoda Paneer","Deep-fried fresh cheese.","7.90"],
     ["Veg Pakoda (G, L)","Deep-fried vegetables.","6.90"],
@@ -560,9 +561,9 @@ const MENU = {
     ["Halloumi Sticks 5 pcs","","8.90"],
   ],
   "Soups": [
-    ["Hot N Sour Soup","","7.90"],
-    ["Chicken Soup","","7.90"],
-    ["Vegan Soup","","6.90"],
+    ["Hot N Sour Soup","Mixed vegetables, chicken, coriander & prawns.","7.90"],
+    ["Chicken Soup","Mixed vegetables & chicken.","7.90"],
+    ["Vegan Soup","Mixed vegetables.","6.90"],
   ],
   "MOMOS": [
     ["Steam MoMo","","14.90"],
@@ -572,58 +573,58 @@ const MENU = {
   "Vegan dishes": [
     ["Vegan Kofta (V, G, L)","Specially prepared vegan kofta cooked in a rich coconut cream sauce. Served with basmati rice and vegan naan bread.","14.90"],
     ["Tofu Chilli (V, G, L)","Deep-fried tofu with roasted bell pepper and chilli in a spicy garlic, onion, ginger, soy and tomato sauce.","14.90"],
-    ["Tofu Korma","","14.90"],
-    ["Tofu Saag","","14.90"],
-    ["Aalu Gobi Tofu Masala","","14.90"],
-    ["Tofu Masala","","14.90"],
+    ["Tofu Korma","Tofu pieces in a rich coconut curry cream sauce.","14.90"],
+    ["Tofu Saag","Tofu pieces and spinach in a rich coconut cream sauce.","14.90"],
+    ["Aalu Gobi Tofu Masala","Fried potato, classic cauliflower and spinach in a ginger, garlic, tomato and herb masala.","14.90"],
+    ["Tofu Masala","Tofu pieces in a herb masala sauce.","14.90"],
   ],
   "Vegetarian dishes": [
-    ["Malai Kofta (G)","","15.90"],
-    ["Shahi Paneer","","15.90"],
-    ["Palak Paneer","","15.90"],
-    ["Paneer Tikka","","15.90"],
+    ["Malai Kofta (G)","Cashew nuts, potato, fresh cheese, raisins and vegetable balls in a tomato, butter and cream sauce.","15.90"],
+    ["Shahi Paneer","Fresh cheese and cashew nuts in a thick tomato, butter and cream sauce.","15.90"],
+    ["Palak Paneer","Iconic spinach curry with ginger in a cream sauce, with cheese.","15.90"],
+    ["Paneer Tikka","Fresh cheese, tomato, bell pepper and onion grilled in a tandoor oven.","15.90"],
     ["Kadai Paneer (G)","","15.90"],
     ["Paneer Chilli","","15.90"],
     ["Paneer Tikka Masala","","15.90"],
   ],
   "Chicken dishes": [
-    ["Butter Chicken (G)","","16.90"],
-    ["Chicken Tikka Masala","","16.90"],
-    ["Chicken Korma","","16.90"],
-    ["Chicken Chilli","","16.90"],
-    ["Chicken Vindaloo","","16.90"],
-    ["Chicken Tikka","","16.90"],
-    ["Chicken Saag","","16.90"],
-    ["Coconut Chicken","","16.90"],
-    ["Garlic Chicken","","16.90"],
-    ["Chicken Curry","","16.90"],
-    ["Pepper Chicken (G, L)","Basmati rice and naan bread included.","16.99"],
-    ["Spiced Hummus Chicken","Basmati rice and naan bread included.","15.99"],
-    ["Gimbu Chicken (G, L)","","16.90"],
+    ["Butter Chicken (G)","Herb- and yoghurt-marinated tandoori-grilled chicken breast in a cashew, tomato, butter, honey and cream sauce.","16.90"],
+    ["Chicken Tikka Masala","Tandoori-grilled chicken breast pieces in a tomato, ginger and herb masala sauce.","16.90"],
+    ["Chicken Korma","Marinated chicken simmered in a creamy, delicious curry made with onion, nuts and yoghurt/coconut.","16.90"],
+    ["Chicken Chilli","Deep-fried chicken breast pieces with green chilli, onion and bell pepper in a soy-chilli sauce.","16.90"],
+    ["Chicken Vindaloo","Chicken breast pieces in a garlic, ginger and vindaloo sauce.","16.90"],
+    ["Chicken Tikka","Boneless chicken pieces marinated in yoghurt and spices, then grilled or roasted, often in a tandoor oven.","16.90"],
+    ["Chicken Saag","Chicken breast pieces, ginger, garlic and spinach in a cream sauce.","16.90"],
+    ["Coconut Chicken","Creamy coconut milk with fresh lime juice, coconut cream and tender, juicy chicken breast.","16.90"],
+    ["Garlic Chicken","Chicken breast pieces, garlic and ginger in a spicy yoghurt-curry sauce.","16.90"],
+    ["Chicken Curry","Chicken in a special curry.","16.90"],
+    ["Pepper Chicken (G, L)","Chicken breast fillets, cumin, coriander, ginger and garlic in a curry sauce with herbs. Basmati rice and naan bread included.","16.99"],
+    ["Spiced Hummus Chicken","Spicy tandoori chicken, hummus, curry sauce, garlic and coriander. Basmati rice and naan bread included.","15.99"],
+    ["Gimbu Chicken (G, L)","Chicken breast fillets, cumin, coriander, ginger and garlic in a curry sauce with herbs.","16.90"],
   ],
   "Lamb dishes": [
-    ["Butter Lamb","","17.90"],
-    ["Lamb Tikka","","17.90"],
-    ["Lamb Masala (G, L)","","17.90"],
-    ["Lamb Chilli","","17.90"],
-    ["Lamb Vindaloo","","17.90"],
+    ["Butter Lamb","Herb- and yoghurt-marinated tandoori-grilled lamb in a cashew, tomato, butter, honey and cream sauce.","17.90"],
+    ["Lamb Tikka","Tandoori-grilled lamb in a tomato, ginger and herb masala sauce.","17.90"],
+    ["Lamb Masala (G, L)","Lamb fillet pieces in a hot chilli-masala sauce.","17.90"],
+    ["Lamb Chilli","Lamb pieces with onion and bell pepper in a soy-chilli sauce.","17.90"],
+    ["Lamb Vindaloo","Lamb in a garlic, ginger and vindaloo sauce.","17.90"],
     ["Lamb Curry (L, P, G)","Braised lamb chops in a tomato-onion sauce.","17.90"],
     ["Lamb Saag","Slow-cooked lamb in a spiced sauce of puréed green spinach.","17.90"],
   ],
   "Shrimps and Fish": [
-    ["Prawn Korma","","18.90"],
-    ["Prawn Saag","","18.90"],
-    ["Prawn Chilli","","18.90"],
-    ["Butter Prawn","","18.90"],
+    ["Prawn Korma","Prawns in a creamy, delicious curry made with onion, nuts and yoghurt/coconut.","18.90"],
+    ["Prawn Saag","Prawns with spinach in a ginger and cream sauce.","18.90"],
+    ["Prawn Chilli","Prawns in a soy-chilli sauce.","18.90"],
+    ["Butter Prawn","King prawns, cashew nuts, mozzarella cheese, tomato, butter and cream sauce.","18.90"],
     ["Fish Chilli (P, L, G)","Tilapia fillet with ginger, onion, bell pepper and soy sauce.","18.90"],
     ["Garlic King Prawns (G, L, P)","","18.90"],
   ],
   "Noodle & Biryani": [
-    ["Shrimps Chowmein Noodle","","17.90"],
-    ["Chicken Chowmein","","16.90"],
-    ["Veg Noodle","","14.90"],
-    ["Veg Biryani","","15.90"],
-    ["Chicken Biryani","","16.90"],
+    ["Shrimps Chowmein Noodle","Fried shrimps, vegetables and noodles with herbs and spices, Nepalese style.","17.90"],
+    ["Chicken Chowmein","Fried chicken, vegetables and noodles with herbs and spices, Nepalese style.","16.90"],
+    ["Veg Noodle","Nepalese-style fried noodles with tofu, vegetables, herbs and spices.","14.90"],
+    ["Veg Biryani","Spiced fried rice with vegetables, cheese, cashew nuts and raisins.","15.90"],
+    ["Chicken Biryani","Spiced fried rice with chicken, cashew nuts and raisins.","16.90"],
     ["Lamb Biryani","","17.90"],
     ["Pokhara Fried Rice","Classic fried rice with your choice of protein and mixed vegetables. Contains coriander.","14.99"],
   ],
@@ -699,14 +700,22 @@ const LUNCH = [
   ]},
 ];
 const tabs = document.getElementById('tabs'), list = document.getElementById('list');
-Object.keys(MENU).forEach((k, i) => {
-  const b = document.createElement('button');
-  b.textContent = k; if (i === 0) b.classList.add('active');
-  b.onclick = () => { tabs.querySelectorAll('button').forEach(x => x.classList.remove('active')); b.classList.add('active'); render(k); };
-  tabs.appendChild(b);
-});
+let MENU_CURRENT = MENU;
+function buildMenuTabs(data, keepKey) {
+  MENU_CURRENT = data;
+  const keys = Object.keys(data);
+  const first = keys.includes(keepKey) ? keepKey : keys[0];
+  tabs.innerHTML = '';
+  keys.forEach((k, i) => {
+    const b = document.createElement('button');
+    b.textContent = k; if (k === first) b.classList.add('active');
+    b.onclick = () => { tabs.querySelectorAll('button').forEach(x => x.classList.remove('active')); b.classList.add('active'); render(k); };
+    tabs.appendChild(b);
+  });
+  render(first);
+}
 function render(k) {
-  list.innerHTML = MENU[k].map(([n, d, p]) => {
+  list.innerHTML = MENU_CURRENT[k].map(([n, d, p]) => {
     const [pr, old] = p.split('|');
     const priceHtml = old
       ? `<span style="text-decoration:line-through;color:var(--muted);font-size:.85rem;margin-right:.55rem">${old.replace('.', ',')} €</span>${pr.replace('.', ',')} €`
@@ -714,7 +723,7 @@ function render(k) {
     return `<div class="dish"><div><b>${n}</b>${d ? `<small>${d}</small>` : ''}</div><div class="p">${priceHtml}</div></div>`;
   }).join('');
 }
-render(Object.keys(MENU)[0]);
+buildMenuTabs(MENU);
 
 /* ===== LOUNAS: selettore giorni — apre sul giorno corrente ===== */
 const DAY_NAMES = [["Maanantai","Monday"],["Tiistai","Tuesday"],["Keskiviikko","Wednesday"],["Torstai","Thursday"],["Perjantai","Friday"]];
@@ -743,6 +752,60 @@ function renderDay(){
   document.getElementById('dayImg').src = LUNCH[curDay].img;
 }
 renderDay();
+
+/* ===== GOOGLE SHEET SYNC (optional) =====
+   If SHEET_ID is set in sheet-config.js, menu / lunch / gallery are read
+   from the Google Sheet instead of the built-in data. Edit the sheet only. */
+function gviz(tab){
+  return fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=1&sheet=${encodeURIComponent(tab)}`)
+    .then(r => r.text())
+    .then(t => {
+      const json = JSON.parse(t.substring(t.indexOf('{'), t.lastIndexOf('}') + 1));
+      return (json.table.rows || []).map(r => (r.c || []).map(c => (c && c.v != null) ? c.v : ''));
+    });
+}
+function normPrice(v){
+  if (v === '' || v == null) return '';
+  const n = parseFloat(String(v).replace(',', '.').replace('\u20ac', '').trim());
+  return isNaN(n) ? String(v).trim() : n.toFixed(2);
+}
+if (typeof SHEET_ID !== 'undefined' && SHEET_ID) {
+  const sheetLunch = [];
+  Promise.all([gviz('Menu'), gviz('Lunch'), gviz('Gallery')]).then(([menuRows, lunchRows, galRows]) => {
+    if (menuRows && menuRows.length) {
+      const m = {};
+      menuRows.forEach(r => {
+        const cat = String(r[0] || '').trim(), name = String(r[1] || '').trim();
+        if (!cat || !name || name.toLowerCase() === 'name') return;
+        if (!m[cat]) m[cat] = [];
+        m[cat].push([name, r[2] ? String(r[2]) : '', normPrice(r[3])]);
+      });
+      if (Object.keys(m).length) buildMenuTabs(m, Object.keys(MENU_CURRENT).find(k => m[k]));
+    }
+    if (lunchRows && lunchRows.length) {
+      const days = [{img:'',dishes:[]},{img:'',dishes:[]},{img:'',dishes:[]},{img:'',dishes:[]},{img:'',dishes:[]}];
+      lunchRows.forEach(r => {
+        const day = parseInt(r[0], 10);
+        if (!(day >= 1 && day <= 5) || !r[1]) return;
+        if (r[4]) days[day-1].img = String(r[4]);
+        days[day-1].dishes.push([String(r[1]), r[2] ? String(r[2]) : '', r[3] ? String(r[3]) : '']);
+      });
+      if (days.some(d => d.dishes.length)) {
+        days.forEach((d, i) => { if (!d.img) d.img = (LUNCH[i] && LUNCH[i].img) || 'assets2/foto5.jpg'; });
+        LUNCH.splice(0, LUNCH.length, ...days);
+        renderDay();
+      }
+    }
+    if (galRows && galRows.length) {
+      const gal = document.querySelector('.gallery .masonry');
+      if (gal) {
+        const figs = galRows.filter(r => r[0]).map(r =>
+          `<figure><img src="${r[0]}" alt="${r[1] ? String(r[1]) : 'Sano Nepal'}" loading="lazy"><figcaption>${r[1] ? String(r[1]) : ''}</figcaption></figure>`);
+        if (figs.length) gal.innerHTML = figs.join('');
+      }
+    }
+  }).catch(() => { /* sheet not reachable: keep built-in content */ });
+}
 
 /* scrollspy + header + toTop */
 const hdr = document.getElementById('hdr'), toTop = document.getElementById('toTop');
