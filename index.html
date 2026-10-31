@@ -6,6 +6,7 @@
 <title>Sano Nepal | Aito nepalilainen keittiö Sörnäisissä | Authentic Nepali Kitchen, Helsinki</title>
 <meta name="description" content="Aitoa nepalilaista ruokaa Sörnäisissä — lounasbuffet, momot, tandoor ja lämmin vieraanvaraisuus.">
 <meta name="theme-color" content="#0c0a09">
+<link rel="icon" type="image/webp" href="assets2/logo-sano-nepal.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Outfit:wght@300..800&display=swap" rel="stylesheet">
@@ -43,7 +44,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;height:4.6rem;display:fle
   border-bottom:1px solid rgba(249,115,22,.18);transition:background .4s,box-shadow .4s}
 header.scrolled{background:var(--navbg2);box-shadow:0 10px 34px rgba(0,0,0,.25)}
 header .brand{display:flex;align-items:center;gap:.7rem}
-header .brand .mark{width:40px;height:40px;flex:none}
+header .brand .mark{width:46px;height:46px;flex:none;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.22)}
+.foot-grid .fbrand .mark{width:88px;height:88px;margin-bottom:1.1rem;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.18)}
 header .brand .name{font-family:var(--display);font-weight:700;font-size:1.02rem;line-height:1.05;color:var(--navtitle);letter-spacing:.04em}
 header .brand .name small{display:block;font-family:var(--sans);font-weight:600;font-size:.52rem;letter-spacing:.42em;color:var(--flame);text-transform:uppercase}
 header nav{display:flex;gap:1.7rem;align-items:center}
@@ -70,7 +72,7 @@ header .actions{display:flex;align-items:center;gap:.7rem}
 
 /* ===== HERO (zoom + sovraimpressione) ===== */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;background:var(--bg)}
-.hero .bg{position:absolute;inset:0;background:url("assets2/foto1.jpg") center/cover no-repeat;z-index:0;
+.hero .bg{position:absolute;inset:0;background:url("assets2/real-thali.webp") center/cover no-repeat;z-index:0;
   transform:scale(1.32);animation:heroZoom 3.2s cubic-bezier(.22,.61,.36,1) forwards}
 @keyframes heroZoom{to{transform:scale(1)}}
 .hero::after{content:"";position:absolute;inset:0;background:var(--herooverlay);z-index:1}
@@ -175,14 +177,15 @@ header .actions{display:flex;align-items:center;gap:.7rem}
 .gallery h2 em{font-style:italic;color:var(--red)}
 .gallery .rule{width:64px;height:3px;margin:1.2rem auto 0;background:linear-gradient(90deg,var(--flame),var(--red));border-radius:2px}
 .gallery .head p{margin-top:.8rem;color:var(--muted)}
-.masonry{max-width:1180px;margin:0 auto;columns:3 300px;column-gap:1.1rem}
+.masonry{max-width:1180px;margin:0 auto;columns:4 240px;column-gap:1.1rem}
 .masonry figure{break-inside:avoid;margin:0 0 1.1rem;border-radius:14px;overflow:hidden;border:1px solid var(--line);position:relative}
-.masonry img{width:100%;display:block;transition:transform .7s ease}
+.masonry img{width:100%;height:auto;display:block;transition:transform .7s ease}
 .masonry figure:hover img{transform:scale(1.06)}
 .masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:2rem 1.1rem .9rem;
   background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;font-size:.8rem;font-weight:600;letter-spacing:.06em;
   opacity:0;transition:.35s}
 .masonry figure:hover figcaption{opacity:1}
+@media(hover:none){.masonry figcaption{opacity:1}}
 @media(max-width:640px){.masonry{columns:2 160px}}
 
 /* ===== MENU (tab spalmate in alto) ===== */
@@ -227,7 +230,7 @@ header .actions{display:flex;align-items:center;gap:.7rem}
 
 /* ===== CTA ===== */
 .cta-final{position:relative;color:#fff;text-align:center;padding:7rem 1.4rem;overflow:hidden;background:var(--bg)}
-.cta-final .bg{position:absolute;inset:0;background:url("assets2/foto5.jpg") center/cover no-repeat;z-index:0;
+.cta-final .bg{position:absolute;inset:0;background:url("assets2/real-thali.webp") center/cover no-repeat;z-index:0;
   transform:scale(1.15);animation:heroZoom 2.6s ease-out forwards}
 .cta-final::after{content:"";position:absolute;inset:0;background:rgba(12,10,9,.82);z-index:1}
 .cta-final h2{position:relative;z-index:2;font-family:var(--display);font-weight:600;font-size:clamp(2rem,5vw,3.6rem);line-height:1.15;max-width:22ch;margin:0 auto}
@@ -236,7 +239,7 @@ header .actions{display:flex;align-items:center;gap:.7rem}
 
 /* ===== RESERVATION (stessa piattaforma di sherpafood.fi/#reservation) ===== */
 .reservation{position:relative;color:#fff;text-align:center;padding:6rem 1.4rem;overflow:hidden;
-  background:url("assets2/foto2.jpg") center/cover no-repeat}
+  background:url("assets2/real-naan-curry.webp") center/cover no-repeat}
 .reservation::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55);z-index:1}
 .reservation .rel{position:relative;z-index:2;max-width:640px;margin:0 auto}
 .reservation h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3rem);color:#fff;margin-bottom:.6rem}
@@ -287,12 +290,8 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
 
 <!-- ===== NAVBAR ===== -->
 <header id="hdr">
-  <a class="brand" href="#alku">
-    <svg class="mark" viewBox="0 0 48 48" fill="none">
-      <circle cx="24" cy="24" r="22" stroke="#f97316" stroke-width="2.4"/>
-      <path d="M24 8c4 6 9 8.5 9 15a9 9 0 1 1-18 0c0-6.5 5-9 9-15z" fill="#ef4444"/>
-      <path d="M24 20c1.8 2.6 4 3.8 4 7a4 4 0 1 1-8 0c0-3.2 2.2-4.4 4-7z" fill="#0c0a09"/>
-    </svg>
+  <a class="brand" href="#alku" aria-label="Sano Nepal — Etusivu">
+    <img class="mark" src="assets2/logo-sano-nepal.webp" alt="Sano Nepal logo" width="46" height="46">
     <span class="name">SANO NEPAL<small>Helsinki · Sörnäinen</small></span>
   </a>
   <nav>
@@ -341,7 +340,7 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
 <section class="about reveal">
   <div class="wrap">
     <figure>
-      <img src="assets2/foto3.jpg" alt="Sano Nepal — ravintolasali">
+      <img src="assets2/real-momo.webp" alt="Sano Nepal — Mo:Mo annos">
       <div class="tagbox"><b>100%</b><small data-fi="Aitoa &amp; käsintehtyä" data-en="Authentic &amp; hand-made">Aitoa &amp; käsintehtyä</small></div>
     </figure>
     <div class="txt">
@@ -365,17 +364,17 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
   </div>
   <div class="grid">
     <div class="card">
-      <figure><img src="assets2/card-momo.jpg" alt="Mo:Mo — höyrytetyt momot tomaattichutneyn kanssa"></figure>
+      <figure><img src="assets2/real-momo.webp" alt="Mo:Mo — annos ravintolan keittiöstä"></figure>
       <div class="txt"><h3>Mo:Mo</h3><p data-fi="Käsintehdyt höyrytetyt momot — butter chicken - tai tikka-kastikkeessa. Nepalin kansallisruoka."
         data-en="Hand-steamed momos in butter chicken or tikka sauce. Nepal's national dish.">Käsintehdyt höyrytetyt momot — butter chicken - tai tikka-kastikkeessa. Nepalin kansallisruoka.</p></div>
     </div>
     <div class="card">
-      <figure><img src="assets2/card-naan.jpg" alt="Naan &amp; Tandoor — valkosipulinaan tandooriuunissa"></figure>
+      <figure><img src="assets2/real-naan-curry.webp" alt="Naan &amp; Tandoor — naan, riisi ja curry"></figure>
       <div class="txt"><h3>Naan &amp; Tandoor</h3><p data-fi="Perinteinen leipä, paistettu savuisen tandooriuunin liekeissä — pehmeä ja ihana."
         data-en="Traditional bread baked in the smoky flames of the tandoor oven — soft and wonderful.">Perinteinen leipä, paistettu savuisen tandooriuunin liekeissä — pehmeä ja ihana.</p></div>
     </div>
     <div class="card">
-      <figure><img src="assets2/card-biryani.jpg" alt="Curry &amp; Biryani — butter chicken ja kana-biryani"></figure>
+      <figure><img src="assets2/real-thali-close.webp" alt="Curry &amp; Biryani — nepalilainen thali"></figure>
       <div class="txt"><h3>Curry &amp; Biryani</h3><p data-fi="Kermainen butter chicken ja tuoksuva kana-biryani — aitoja Himalajan makuja joka päivä."
         data-en="Creamy butter chicken and fragrant chicken biryani — authentic Himalayan flavours every day.">Kermainen butter chicken ja tuoksuva kana-biryani — aitoja Himalajan makuja joka päivä.</p></div>
     </div>
@@ -401,7 +400,7 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
         <div class="buffet-price">13,50 €<small data-fi="henkilöltä · lounasaikaan" data-en="per person · at lunchtime">henkilöltä · lounasaikaan</small></div>
         <p class="today-line" id="todayLine"></p>
       </div>
-      <figure><img id="dayImg" src="assets2/foto5.jpg" alt="Lounasbuffet"></figure>
+      <figure><img id="dayImg" src="assets2/real-thali.webp" alt="Lounasbuffet"></figure>
     </div>
   </div>
 </section>
@@ -421,7 +420,7 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
      data-en="Full menu in the restaurant and on Wolt.">Täydellinen menu ravintolassa ja Woltissa.</p>
 </div>
 
-<!-- ===== GALLERY (feed foto — per aggiungere piatti: copia un <figure> e cambia src/caption) ===== -->
+<!-- ===== GALLERY: fotografie originali fornite dal ristorante ===== -->
 <section class="gallery reveal" id="galleria">
   <div class="head">
     <h2 data-fih="Kuva<em>galleria</em>" data-enh="Photo <em>Gallery</em>">Kuva<em>galleria</em></h2>
@@ -429,14 +428,10 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
     <p data-fi="Suoraan keittiöstämme — momot, tandoor ja Himalayan makuja." data-en="Straight from our kitchen — momos, tandoor and Himalayan flavours.">Suoraan keittiöstämme — momot, tandoor ja Himalayan makuja.</p>
   </div>
   <div class="masonry">
-    <figure><img src="assets2/card-momo.jpg" alt="Mo:Mo"><figcaption>Mo:Mo — Nepalin kansallisruoka</figcaption></figure>
-    <figure><img src="assets2/foto2.jpg" alt="Sano Nepal"><figcaption>Sano Nepal</figcaption></figure>
-    <figure><img src="assets2/card-naan.jpg" alt="Naan"><figcaption>Tandoor &amp; naan</figcaption></figure>
-    <figure><img src="assets2/foto3.jpg" alt="Ravintolasali"><figcaption>Ravintolasali</figcaption></figure>
-    <figure><img src="assets2/card-biryani.jpg" alt="Biryani"><figcaption>Kana-biryani</figcaption></figure>
-    <figure><img src="assets2/foto4.jpg" alt="Sano Nepal"><figcaption>Himalajan makuja</figcaption></figure>
-    <figure><img src="assets2/foto1.jpg" alt="Sano Nepal"><figcaption>Sano Nepal — Sörnäinen</figcaption></figure>
-    <figure><img src="assets2/foto5.jpg" alt="Lounasbuffet"><figcaption>Lounasbuffet</figcaption></figure>
+    <figure><img src="assets2/real-momo.webp" alt="Sano Nepal — Mo:Mo" width="1200" height="1600" loading="lazy" decoding="async"><figcaption data-fi="Mo:Mo — keittiöstämme" data-en="Mo:Mo — from our kitchen">Mo:Mo — keittiöstämme</figcaption></figure>
+    <figure><img src="assets2/real-naan-curry.webp" alt="Sano Nepal — Naan, rice and curry" width="1402" height="1122" loading="lazy" decoding="async"><figcaption data-fi="Naan, riisi ja curry" data-en="Naan, rice and curry">Naan, riisi ja curry</figcaption></figure>
+    <figure><img src="assets2/real-thali-close.webp" alt="Sano Nepal — Nepali thali" width="1080" height="1422" loading="lazy" decoding="async"><figcaption data-fi="Nepalilainen thali" data-en="Nepali thali">Nepalilainen thali</figcaption></figure>
+    <figure><img src="assets2/real-thali.webp" alt="Sano Nepal — Himalayan flavours" width="1600" height="1200" loading="lazy" decoding="async"><figcaption data-fi="Himalajan maut pöydässä" data-en="Himalayan flavours on the table">Himalajan maut pöydässä</figcaption></figure>
   </div>
 </section>
 
@@ -511,6 +506,7 @@ footer{background:var(--footerbg);border-top:1px solid var(--line);color:var(--m
 <footer>
   <div class="foot-grid">
     <div class="fbrand">
+      <img class="mark" src="assets2/logo-sano-nepal.webp" alt="Sano Nepal logo" width="88" height="88">
       <div class="fname" data-fih="Tervetuloa<br><em>Sano Nepal</em>" data-enh="Welcome to<br><em>Sano Nepal</em>">Tervetuloa<br><em>Sano Nepal</em></div>
       <p data-fi="Aito nepalilainen Himalajan keittiö ja lämmin olemus."
          data-en="Authentic Himalayan Nepali kitchen and a warm soul.">Aito nepalilainen Himalajan keittiö ja lämmin olemus.</p>
@@ -653,7 +649,7 @@ const MENU = {
 /* ===== LOUNAS: buffet di ogni giorno (dal PDF del proprietario).
    Per cambiare i piatti di un giorno modifica le voci qui sotto. ===== */
 const LUNCH = [
-  { img:"assets2/foto5.jpg", dishes:[
+  { img:"assets2/real-thali.webp", dishes:[
     ["Fish Chilli (P, L)","Deep-fried pangasius fillet in soy chilli sauce","Pangasiussiivu uppopaistuna soija-chilikastikkeessa"],
     ["Noodle (P, L)","Noodles and vegetables seasoned with herbs and spices","Nuudeleita ja kasviksia yrteillä ja mausteilla"],
     ["Dal / Lentil (V, P, L, G)","Lentils dal cooked in oil with cumin seeds, onions, tomatoes, garlic, ginger and turmeric","Linssidal kuminalla, sipulilla, tomaatilla, valkosipulilla, inkiväärillä ja kurkumalla"],
@@ -662,7 +658,7 @@ const LUNCH = [
     ["Butter Chicken (G)","Tandoori grill chicken pieces in tomato butter cream sauce","Tandoorissa grillattua kanaa tomaatti-voikermakastikkeessa"],
     ["Lamb Kofta Masala (P, L, G)","Lamb meatballs with garlic and ginger in masala sauce","Lihapullat valkosipulilla ja inkiväärillä masalakastikkeessa"],
   ]},
-  { img:"assets2/foto3.jpg", dishes:[
+  { img:"assets2/real-momo.webp", dishes:[
     ["Butter Rapu (P, L)","Shrimps with tomato butter cream sauce","Katkarapuja tomaatti-voikermakastikkeessa"],
     ["Noodle (P, L)","Noodles and vegetables seasoned with herbs and spices","Nuudeleita ja kasviksia yrteillä ja mausteilla"],
     ["Dal / Lentil (V, P, L, G)","Lentils dal cooked in oil with cumin seeds, onions, tomatoes, garlic, ginger and turmeric","Linssidal kuminalla, sipulilla, tomaatilla, valkosipulilla, inkiväärillä ja kurkumalla"],
@@ -671,7 +667,7 @@ const LUNCH = [
     ["Chicken Kadai (P, G)","Chicken pieces with capsicum and onion in masala & tomato butter cream sauce","Kanaa paprikalla ja sipulilla masala-tomaattivoikermakastikkeessa"],
     ["Lamb Kofta Chilli (P, L, G)","Lamb meatballs, capsicum and onion with ginger, garlic and soya chilli sauce","Lihapullat, paprika ja sipuli inkiväärin, valkosipulin ja soija-chilikastikkeen kanssa"],
   ]},
-  { img:"assets2/foto2.jpg", dishes:[
+  { img:"assets2/real-naan-curry.webp", dishes:[
     ["Chicken Tikka (G)","Tandoori grilled chicken pieces with capsicum and onion in soy chilli sauce","Tandoorissa grillattua kanaa paprikalla ja sipulilla soija-chilikastikkeessa"],
     ["Noodle (P, L)","Noodles and vegetables seasoned with herbs and spices","Nuudeleita ja kasviksia yrteillä ja mausteilla"],
     ["Dal / Lentil (V, P, L, G)","Lentils dal cooked in oil with cumin seeds, onions, tomatoes, garlic, ginger and turmeric","Linssidal kuminalla, sipulilla, tomaatilla, valkosipulilla, inkiväärillä ja kurkumalla"],
@@ -680,7 +676,7 @@ const LUNCH = [
     ["Chicken Chilli (G)","Fried chicken pieces with onion and capsicum in soya tomato chilli sauce","Paistettua kanaa sipulilla ja paprikalla soija-tomaattichilikastikkeessa"],
     ["Lamb Saag (P, G)","Lamb pieces in spinach and ginger curry cream sauté","Lammasta pinaatin ja inkiväärin currykermapadassa"],
   ]},
-  { img:"assets2/foto4.jpg", dishes:[
+  { img:"assets2/real-thali-close.webp", dishes:[
     ["Chicken Chilli (G)","Fried chicken pieces with onion and capsicum in soya tomato chilli sauce","Paistettua kanaa sipulilla ja paprikalla soija-tomaattichilikastikkeessa"],
     ["Noodle (P, L)","Noodles and vegetables seasoned with herbs and spices","Nuudeleita ja kasviksia yrteillä ja mausteilla"],
     ["Dal / Lentil (V, P, L, G)","Lentils dal cooked in oil with cumin seeds, onions, tomatoes, garlic, ginger and turmeric","Linssidal kuminalla, sipulilla, tomaatilla, valkosipulilla, inkiväärillä ja kurkumalla"],
@@ -689,7 +685,7 @@ const LUNCH = [
     ["Chicken Tikka Masala (P, G)","Tandoori grilled chicken pieces in herb, ginger, garlic and onion masala sauce","Tandoorissa grillattua kanaa yrtti-inkivääri-valkosipuli-sipulimasalakastikkeessa"],
     ["Lamb Curry (P, L, G)","Lamb pieces in herb, ginger and garlic curry","Lammasta yrteillä, inkiväärillä ja valkosipulilla"],
   ]},
-  { img:"assets2/foto1.jpg", dishes:[
+  { img:"assets2/real-thali.webp", dishes:[
     ["Rapu Saag (P, G)","Shrimps and spinach with ginger, garlic curry sauce","Katkarapuja ja pinaattia inkiväärin ja valkosipulin currykastikkeessa"],
     ["Noodle (P, L)","Noodles and vegetables seasoned with herbs and spices","Nuudeleita ja kasviksia yrteillä ja mausteilla"],
     ["Dal / Lentil (V, P, L, G)","Lentils dal cooked in oil with cumin seeds, onions, tomatoes, garlic, ginger and turmeric","Linssidal kuminalla, sipulilla, tomaatilla, valkosipulilla, inkiväärillä ja kurkumalla"],
@@ -754,8 +750,9 @@ function renderDay(){
 renderDay();
 
 /* ===== GOOGLE SHEET SYNC (optional) =====
-   If SHEET_ID is set in sheet-config.js, menu / lunch / gallery are read
-   from the Google Sheet instead of the built-in data. Edit the sheet only. */
+   Menu and lunch are read from the Google Sheet when SHEET_ID is set.
+   The gallery intentionally stays local so the restaurant's original photos
+   remain identical in the Finnish and English versions. */
 function gviz(tab){
   return fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=1&sheet=${encodeURIComponent(tab)}`)
     .then(r => r.text())
@@ -775,8 +772,7 @@ function normPrice(v){
   return isNaN(n) ? String(v).trim() : n.toFixed(2);
 }
 if (typeof SHEET_ID !== 'undefined' && SHEET_ID) {
-  const sheetLunch = [];
-  Promise.all([gviz('Menu'), gviz('Lunch'), gviz('Gallery')]).then(([menuRows, lunchRows, galRows]) => {
+  Promise.all([gviz('Menu'), gviz('Lunch')]).then(([menuRows, lunchRows]) => {
     if (menuRows && menuRows.length) {
       const m = {};
       menuRows.forEach(r => {
@@ -792,21 +788,13 @@ if (typeof SHEET_ID !== 'undefined' && SHEET_ID) {
       lunchRows.forEach(r => {
         const day = parseInt(r[0], 10);
         if (!(day >= 1 && day <= 5) || !r[1]) return;
-        if (r[4]) days[day-1].img = String(r[4]);
+        /* Keep the restaurant's local original photos; sync dishes only. */
         days[day-1].dishes.push([String(r[1]), r[2] ? String(r[2]) : '', r[3] ? String(r[3]) : '']);
       });
       if (days.some(d => d.dishes.length)) {
-        days.forEach((d, i) => { if (!d.img) d.img = (LUNCH[i] && LUNCH[i].img) || 'assets2/foto5.jpg'; });
+        days.forEach((d, i) => { if (!d.img) d.img = (LUNCH[i] && LUNCH[i].img) || 'assets2/real-thali.webp'; });
         LUNCH.splice(0, LUNCH.length, ...days);
         renderDay();
-      }
-    }
-    if (galRows && galRows.length) {
-      const gal = document.querySelector('.gallery .masonry');
-      if (gal) {
-        const figs = galRows.filter(r => r[0]).map(r =>
-          `<figure><img src="${r[0]}" alt="${r[1] ? String(r[1]) : 'Sano Nepal'}" loading="lazy"><figcaption>${r[1] ? String(r[1]) : ''}</figcaption></figure>`);
-        if (figs.length) gal.innerHTML = figs.join('');
       }
     }
   }).catch(() => { /* sheet not reachable: keep built-in content */ });

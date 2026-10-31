@@ -1,7 +1,7 @@
 /* ============================================================
    GOOGLE SHEET CONNECTION
    ------------------------------------------------------------
-   To edit menu, lunch buffet and gallery photos yourself:
+   To edit the menu and lunch buffet yourself:
 
    1. Create a Google Sheet (see the guide you received).
    2. Copy its ID from the sheet URL:
